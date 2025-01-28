@@ -816,7 +816,7 @@ document.getElementById('get-report').addEventListener('click', () => {
 
   students[selectedClass].forEach(student => {
     const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-    const status = isPresent ? `Present at ${isPresent}` : 'Absent';
+    const status = isPresent ? `Present` : 'Absent';
     tableData.push({
       register: student.register,
       name: student.name,
