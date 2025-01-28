@@ -169,6 +169,7 @@
             color: black;
         }
 
+
         #absent-report {
             background-color: #607d8b;
             color: white;
@@ -695,6 +696,15 @@ const teacherPhotos = {
     "10E": "https://i.ibb.co/7pQF1fK/10E.png",
     "10F": "https://i.ibb.co/TWLprNS/10F.jpg"
 };
+
+const classTeachers = {
+  "10A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163", photoUrl: "https://i.ibb.co/t3CJSq0/10A.jpg" },
+  "10B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947", photoUrl: "https://i.ibb.co/L8LKZs3/10B.jpg" },
+  "10C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515", photoUrl: "https://i.ibb.co/1mkrZtL/10C.jpg" },
+  "10D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733", photoUrl: "https://i.ibb.co/NrFccJ8/10D.png" },
+  "10E": { name: "Mr. Uditha Godagama", phone: "077 722 9242", photoUrl: "https://i.ibb.co/7pQF1fK/10E.png" },
+  "10F": { name: "Mr. Yasas Darshana", phone: "077 358 0485", photoUrl: "https://i.ibb.co/TWLprNS/10F.jpg" },
+};
 const classSelect = document.getElementById('class-select');
 const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
 const currentDateElement = document.getElementById('current-date-time');
@@ -804,72 +814,79 @@ document.getElementById('get-report').addEventListener('click', () => {
   const selectedClass = classSelect.value;
   const doc = new jsPDF();
   doc.setFontSize(12);
-  doc.text(`Attendance Report - Class ${selectedClass}`, 10, 10);
+  doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
 
-  const teacher = teachers[selectedClass];
-  doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-  doc.text(`Class Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
+  const teacher = classTeachers[selectedClass]; // Updated reference
+  const teacherImageUrl = teacher.photoUrl;
 
-  let tableData = [];
-  const totalStudents = students[selectedClass].length;
-  let presentCount = 0;
+  // Load the image and add it to the PDF
+  const img = new Image();
+  img.src = teacherImageUrl;
+  img.onload = () => {
+    doc.addImage(img, 'JPEG', 160, 4, 28, 31); // Adjust x, y, width, height as needed
 
-  students[selectedClass].forEach(student => {
-    const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-    const status = isPresent ? `Present` : 'Absent';
-    tableData.push({
-      register: student.register,
-      name: student.name,
-      status: status,
-      rowColor: isPresent ? [204, 255, 204] : [255, 204, 204] // Green for present, Red for absent
-    });
-    if (isPresent) {
-      presentCount++;
-    }
-  });
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+    doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
 
-  const absentCount = totalStudents - presentCount;
-  doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
+    let tableData = [];
+    const totalStudents = students[selectedClass].length;
+    let presentCount = 0;
 
-  const columns = [
-    { header: 'Register Number', dataKey: 'register' },
-    { header: 'Name', dataKey: 'name' },
-    { header: 'Attendance Status', dataKey: 'status' }
-  ];
-
-  doc.autoTable({
-    columns: columns,
-    body: tableData,
-    startY: 35,
-    theme: 'grid',
-    margin: { top: 30 },
-    styles: { fontSize: 10 },
-    headStyles: {
-      fillColor: [0, 0, 0], 
-      textColor: [0, 0, 0],       // Black text
-      fontStyle: 'bold'           // Bold text for headers
-    },
-    didParseCell: (data) => {
-      if (data.section === 'head') {
-        // Make headers appear like table rows by applying the same fill color
-        data.cell.styles.fillColor = [255, 230, 66]; // Light yellow
-      } else if (data.section === 'body') {
-        const rowData = tableData[data.row.index];
-        if (rowData && rowData.rowColor) {
-          data.cell.styles.fillColor = rowData.rowColor;
-        }
+    students[selectedClass].forEach(student => {
+      const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
+      const status = isPresent ? `Present` : 'Absent';
+      tableData.push({
+        register: student.register,
+        name: student.name,
+        status: status,
+        rowColor: isPresent ? [204, 255, 204] : [255, 204, 204] // Green for present, Red for absent
+      });
+      if (isPresent) {
+        presentCount++;
       }
-    },
-    didDrawPage: (data) => {
-      doc.setFontSize(10);
-      doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-    }
-  });
+    });
 
-  doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, doc.lastAutoTable.finalY + 10);
-  doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+    const absentCount = totalStudents - presentCount;
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
+
+    const columns = [
+      { header: 'Register Number', dataKey: 'register' },
+      { header: 'Name', dataKey: 'name' },
+      { header: 'Attendance Status', dataKey: 'status' }
+    ];
+
+    doc.autoTable({
+      columns: columns,
+      body: tableData,
+      startY: 44,
+      theme: 'grid',
+      margin: { top: 30 },
+      styles: { fontSize: 10 },
+      headStyles: {
+        fillColor: [0, 0, 0], 
+        textColor: [0, 0, 0],       // Black text
+        fontStyle: 'bold'           // Bold text for headers
+      },
+      didParseCell: (data) => {
+        if (data.section === 'head') {
+          data.cell.styles.fillColor = [255, 230, 66]; // Light yellow
+        } else if (data.section === 'body') {
+          const rowData = tableData[data.row.index];
+          if (rowData && rowData.rowColor) {
+            data.cell.styles.fillColor = rowData.rowColor;
+          }
+        }
+      },
+      didDrawPage: (data) => {
+        doc.setFontSize(10);
+        doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+      }
+    });
+
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, doc.lastAutoTable.finalY + 10);
+    doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+  };
 });
-
 
 document.getElementById('absent-report').addEventListener('click', () => {
   const selectedClass = classSelect.value;
