@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahinda College E-Register</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+        color: #333;
+        overflow-x: hidden;
+    }
+    header {
+        background-color: #efe93b;
+        color: black;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #logo{
+        height: 60px;
+    }
+    #menu-button {
+        font-size: 2rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+    #menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    #menu a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: black;
+        background: #ebf088;
+        transition: background 0.3s;
+    }
+    #menu a:hover {
+        background: #a9faed;
+        color: white;
+    }
+    .container {
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .buttons button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        color: rgb(3, 0, 0);
+        background: linear-gradient(120deg, #e0fa5e, #eef355);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .buttons button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+    footer {
+        background-color: #004d40;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #topic{
+        text-align: center;
+        left: 50px;
+    }
+    #footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    z-index: 100;
+}
+
+#footer a {
+    color: #001aff;
+    text-decoration: none;
+    font-weight: bold;
+    outline: #000000;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f5f5f5; /* Light background */
+        }
+</style>
+</head>
+<header>
+    <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="logo">
+    <h1 style="text-align: center;">Hi</h1>
+
+</header>
+<body>
+    <button id="menu-button">&#9776;</button>
+<div id="footer">
+    Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
+</div>
+<div id="menu">
+    <a href="intro.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact Us</a>
+</div>
+<div class="container">
+    <h2>Choose Your Grade</h2><br>
+    <div class="buttons">
+        <button onclick="location.href='index.html'">Grade 9</button>
+        <button onclick="location.href='index.html'">Grade 10</button>
+        <button onclick="location.href='index.html'">Grade 11</button>
+    </div>
+</div>
+<script>
+    document.getElementById("menu-button").addEventListener("click", function() {
+        var menu = document.getElementById("menu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+</body>
+</html>
