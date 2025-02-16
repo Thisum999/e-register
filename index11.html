@@ -40,15 +40,6 @@
     z-index: 1000;
 }
 
-#share-whatsapp {
-    background-color: #25d366; /* WhatsApp green color */
-    color: white;
-}
-
-#share-whatsapp:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
 .nav-links {
     display: flex;
     justify-content: center; /* This centers the navigation links */
@@ -407,7 +398,6 @@
     <div id="summary-below"></div>
     <button id="clear-data" class="button">Clear Data</button>
     <button id="get-report" class="button">Get Report</button>
-    <button id="share-whatsapp" class="button">Share on WhatsApp</button>
     <button id="absent-report" class="button">Absent Report</button>
     <button id="summary-report" class="button">Summary Report</button>
     <button id="add-marks" class="button">Add Marks</button>
@@ -1113,117 +1103,7 @@ generateSummaryButton.addEventListener('click', () => {
 classSelect.addEventListener('change', loadStudents);
 loadStudents();
 
-document.getElementById('share-whatsapp').addEventListener('click', async () => {
-    const selectedClass = classSelect.value;
-    const doc = new jsPDF();
-    doc.setFontSize(12);
-    doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
 
-    const teacher = classTeachers[selectedClass];
-    const teacherImageUrl = teacher.photoUrl;
-
-    const img = new Image();
-    img.src = teacherImageUrl;
-    img.onload = () => {
-        doc.addImage(img, 'JPEG', 160, 4, 28, 31);
-
-        doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
-        doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
-
-        let tableData = [];
-        const totalStudents = students[selectedClass].length;
-        let presentCount = 0;
-
-        students[selectedClass].forEach(student => {
-            const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-            const status = isPresent ? `Present` : 'Absent';
-            tableData.push({
-                register: student.register,
-                name: student.name,
-                status: status,
-                rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
-            });
-            if (isPresent) {
-                presentCount++;
-            }
-        });
-
-        const absentCount = totalStudents - presentCount;
-        doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
-
-        const columns = [
-            { header: 'Register Number', dataKey: 'register' },
-            { header: 'Name', dataKey: 'name' },
-            { header: 'Attendance Status', dataKey: 'status' }
-        ];
-
-        doc.autoTable({
-            columns: columns,
-            body: tableData,
-            startY: 44,
-            theme: 'grid',
-            margin: { top: 30 },
-            styles: { fontSize: 10 },
-            headStyles: {
-                fillColor: [0, 0, 0],
-                textColor: [0, 0, 0],
-                fontStyle: 'bold'
-            },
-            didParseCell: (data) => {
-                if (data.section === 'head') {
-                    data.cell.styles.fillColor = [255, 230, 66];
-                } else if (data.section === 'body') {
-                    const rowData = tableData[data.row.index];
-                    if (rowData && rowData.rowColor) {
-                        data.cell.styles.fillColor = rowData.rowColor;
-                    }
-                }
-            },
-            didDrawPage: (data) => {
-                doc.setFontSize(10);
-                doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-            }
-        });
-
-        // Convert PDF to a Blob
-        const pdfBlob = doc.output('blob');
-
-        // Upload the PDF to a temporary file-sharing service
-        uploadPDFToServer(pdfBlob).then(pdfUrl => {
-            if (pdfUrl) {
-                // Construct the WhatsApp message
-                const message = `Here is the attendance report for Class ${selectedClass} on ${new Date().toLocaleDateString()}. Download it here: ${pdfUrl}`;
-                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-
-                // Open WhatsApp in a new tab
-                window.open(whatsappUrl, '_blank');
-            } else {
-                alert('Failed to upload PDF. Please try again.');
-            }
-        });
-    };
-});
-
-// Function to upload PDF to a temporary file-sharing service
-async function uploadPDFToServer(pdfBlob) {
-    const formData = new FormData();
-    formData.append('file', pdfBlob, `Attendance_Report_${new Date().toLocaleDateString()}.pdf`);
-
-    try {
-        const response = await fetch('https://tmpfiles.org/api/v1/upload', {
-            method: 'POST',
-            body: formData,
-        });
-
-        const data = await response.json();
-        if (data.data.url) {
-            return data.data.url; // Return the downloadable link
-        }
-    } catch (error) {
-        console.error('Error uploading PDF:', error);
-        return null;
-    }
-}
 </script>
 </body>
 </html>
