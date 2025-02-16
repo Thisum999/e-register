@@ -46,6 +46,19 @@
     gap: 20px;
 }
 
+#share-whatsapp {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#share-whatsapp:hover {
+    background-color: #219F6A; /* Darker shade of green on hover */
+    transform: translateY(-2px);
+}
+
 .nav-links a {
     text-decoration: none;
     color: #000211;
@@ -397,10 +410,11 @@
     </table>
     <div id="summary-below"></div>
     <button id="clear-data" class="button">Clear Data</button>
-    <button id="get-report" class="button">Get Report</button>
-    <button id="absent-report" class="button">Absent Report</button>
-    <button id="summary-report" class="button">Summary Report</button>
-    <button id="add-marks" class="button">Add Marks</button>
+<button id="get-report" class="button">Get Report</button>
+<button id="share-whatsapp" class="button" style="display: none;">Share on WhatsApp</button>
+<button id="absent-report" class="button">Absent Report</button>
+<button id="summary-report" class="button">Summary Report</button>
+<button id="add-marks" class="button">Add Marks</button>
     <div id="classSelection" style="display: none;">
         <label><input type="checkbox" value="10A"> 10A</label>
         <label><input type="checkbox" value="10B"> 10B</label>
@@ -919,8 +933,27 @@ document.getElementById('get-report').addEventListener('click', () => {
       }
     });
 
+    // Save the PDF to a Blob
+    const pdfBlob = doc.output('blob');
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+
+    // Show the "Share on WhatsApp" button
+    document.getElementById('share-whatsapp').style.display = 'block';
+
+    // Save the PDF to the user's device
     doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
   };
+});
+
+document.getElementById('share-whatsapp').addEventListener('click', () => {
+  // Get the PDF URL
+  const pdfUrl = document.getElementById('get-report').pdfUrl;
+
+  // WhatsApp URL scheme
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(pdfUrl)}`;
+
+  // Open WhatsApp in the browser
+  window.open(whatsappUrl, '_blank');
 });
 
 document.getElementById('absent-report').addEventListener('click', () => {
