@@ -937,25 +937,41 @@ document.getElementById('get-report').addEventListener('click', () => {
     const pdfBlob = doc.output('blob');
     const pdfUrl = URL.createObjectURL(pdfBlob);
 
-    // Show the "Share on WhatsApp" button
-    document.getElementById('share-whatsapp').style.display = 'block';
-
     // Save the PDF to the user's device
     doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+
+    // Upload the PDF to the server and get a shareable URL
+    uploadPdfToServer(pdfBlob).then(shareableUrl => {
+      document.getElementById('share-whatsapp').style.display = 'block';
+      document.getElementById('share-whatsapp').shareableUrl = shareableUrl;
+    });
   };
 });
 
 document.getElementById('share-whatsapp').addEventListener('click', () => {
-  // Get the PDF URL
-  const pdfUrl = document.getElementById('get-report').pdfUrl;
+  // Get the shareable URL
+  const shareableUrl = document.getElementById('share-whatsapp').shareableUrl;
 
   // WhatsApp URL scheme
-  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(pdfUrl)}`;
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareableUrl)}`;
 
   // Open WhatsApp in the browser
   window.open(whatsappUrl, '_blank');
 });
 
+// Function to upload the PDF to the server and get a shareable URL
+async function uploadPdfToServer(blob) {
+  const formData = new FormData();
+  formData.append('file', blob, 'attendance_report.pdf');
+
+  const response = await fetch('https://your-server-endpoint.com/upload', {
+    method: 'POST',
+    body: formData,
+  });
+
+  const data = await response.json();
+  return data.url; // Assuming the server returns a shareable URL
+}
 document.getElementById('absent-report').addEventListener('click', () => {
   const selectedClass = classSelect.value;
   const doc = new jsPDF();
