@@ -949,28 +949,96 @@ document.getElementById('get-report').addEventListener('click', () => {
 });
 
 document.getElementById('share-whatsapp').addEventListener('click', () => {
-  // Get the shareable URL
-  const shareableUrl = document.getElementById('share-whatsapp').shareableUrl;
+  const selectedClass = classSelect.value;
+  const doc = new jsPDF();
+  doc.setFontSize(12);
+  doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
 
+  const teacher = classTeachers[selectedClass]; // Updated reference
+  const teacherImageUrl = teacher.photoUrl;
+
+  // Load the image and add it to the PDF
+  const img = new Image();
+  img.src = teacherImageUrl;
+  img.onload = () => {
+    doc.addImage(img, 'JPEG', 160, 4, 28, 31); // Adjust x, y, width, height as needed
+
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+    doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
+
+    let tableData = [];
+    const totalStudents = students[selectedClass].length;
+    let presentCount = 0;
+
+    students[selectedClass].forEach(student => {
+      const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
+      const status = isPresent ? `Present` : 'Absent';
+      tableData.push({
+        register: student.register,
+        name: student.name,
+        status: status,
+        rowColor: isPresent ? [204, 255, 204] : [255, 204, 204] // Green for present, Red for absent
+      });
+      if (isPresent) {
+        presentCount++;
+      }
+    });
+
+    const absentCount = totalStudents - presentCount;
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
+
+    const columns = [
+      { header: 'Register Number', dataKey: 'register' },
+      { header: 'Name', dataKey: 'name' },
+      { header: 'Attendance Status', dataKey: 'status' }
+    ];
+
+    doc.autoTable({
+      columns: columns,
+      body: tableData,
+      startY: 44,
+      theme: 'grid',
+      margin: { top: 30 },
+      styles: { fontSize: 10 },
+      headStyles: {
+        fillColor: [0, 0, 0], 
+        textColor: [0, 0, 0],       // Black text
+        fontStyle: 'bold'           // Bold text for headers
+      },
+      didParseCell: (data) => {
+        if (data.section === 'head') {
+          data.cell.styles.fillColor = [255, 230, 66]; // Light yellow
+        } else if (data.section === 'body') {
+          const rowData = tableData[data.row.index];
+          if (rowData && rowData.rowColor) {
+            data.cell.styles.fillColor = rowData.rowColor;
+          }
+        }
+      },
+      didDrawPage: (data) => {
+        doc.setFontSize(10);
+        doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+      }
+    });
+
+    // Save the PDF to a Blob
+    const pdfBlob = doc.output('blob');
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+
+    // Save the PDF to the user's device
+    doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+
+    // Share the PDF via WhatsApp
+    sharePdfOnWhatsApp(pdfUrl);
+  };
+});
+
+function sharePdfOnWhatsApp(pdfUrl) {
   // WhatsApp URL scheme
-  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareableUrl)}`;
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(pdfUrl)}`;
 
   // Open WhatsApp in the browser
   window.open(whatsappUrl, '_blank');
-});
-
-// Function to upload the PDF to the server and get a shareable URL
-async function uploadPdfToServer(blob) {
-  const formData = new FormData();
-  formData.append('file', blob, 'attendance_report.pdf');
-
-  const response = await fetch('https://your-server-endpoint.com/upload', {
-    method: 'POST',
-    body: formData,
-  });
-
-  const data = await response.json();
-  return data.url; // Assuming the server returns a shareable URL
 }
 document.getElementById('absent-report').addEventListener('click', () => {
   const selectedClass = classSelect.value;
