@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <header>
+    <div class="nav-links">
+        <a href="intro.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCG E-Register</title>
     <div id="footer">
       Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
-  </div>
+    </div>
     <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="school-logo">
     <style>
         body {
@@ -21,6 +28,35 @@
         #name{
           bottom: 0px;
         }
+
+        header {
+    background-color: #ffc300;
+    padding: 0.5px 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center; /* This centers the navigation links */
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000211;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #1610d7;
+}
 
         /* Footer Styles */
 #footer {
@@ -306,32 +342,25 @@
     h2 {
         font-size: 1rem;
     }
-
-   
-
-   
-
-    
 }
-
     
     </style>
 </head>
 <body>
 <div id="app-container">
     <h1>MCG E-Register</h1>
-    <h2>Grade 10 - 2024</h2>
+    <h2>Grade 11 - 2025</h2>
     <div class="teacher-name" id="teacher-name"></div>
     <img id="teacher-photo" src="10A-10.jfif" alt="Teacher's Photo" style="display: none;" />
     <div id="current-date-time"></div>
     <label for="class-select">Select Class:</label>
     <select id="class-select">
-        <option value="10A">10A</option>
-        <option value="10B">10B</option>
-        <option value="10C">10C</option>
-        <option value="10D">10D</option>
-        <option value="10E">10E</option>
-        <option value="10F">10F</option>
+        <option value="11A">11A</option>
+        <option value="11B">11B</option>
+        <option value="11C">11C</option>
+        <option value="11D">11D</option>
+        <option value="11E">11E</option>
+        <option value="11F">11F</option>
     </select>
     <div id="subject-container" style="display: none;">
         <label for="subject-select">Select Subject:</label>
@@ -366,12 +395,12 @@
     <button id="summary-report" class="button">Summary Report</button>
     <button id="add-marks" class="button">Add Marks</button>
     <div id="classSelection" style="display: none;">
-        <label><input type="checkbox" value="10A"> 10A</label>
-        <label><input type="checkbox" value="10B"> 10B</label>
-        <label><input type="checkbox" value="10C"> 10C</label>
-        <label><input type="checkbox" value="10D"> 10D</label>
-        <label><input type="checkbox" value="10E"> 10E</label>
-        <label><input type="checkbox" value="10F"> 10F</label>
+        <label><input type="checkbox" value="11A"> 11A</label>
+        <label><input type="checkbox" value="11B"> 11B</label>
+        <label><input type="checkbox" value="11C"> 11C</label>
+        <label><input type="checkbox" value="11D"> 11D</label>
+        <label><input type="checkbox" value="11E"> 11E</label>
+        <label><input type="checkbox" value="11F"> 11F</label>
         <br>
         <button id="generate-summary" class="button">Generate Selected Summary Report</button>
     </div>
@@ -705,31 +734,32 @@ const students = {
         };
 
 const teachers = {
-  "9A": { name: "Mrs. G.N.G Nishani", phone: "" },
-  "9B": { name: "Mrs. Manoja", phone: "" },
-  "9C": { name: "Mr. T.H.D Chathulakkana", phone: "" },
-  "9D": { name: "Mrs. S Wijekoon", phone: "077 " },
-  "9E": { name: "Mrs. W. Sewwandi", phone: "077" },
-  "9F": { name: "Mrs. Himali Sajeewani", phone: "077" },
+  "11A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163" },
+  "11B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947" },
+  "11C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515" },
+  "11D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733" },
+  "11E": { name: "Mr. Uditha Godagama", phone: "077 722 9242" },
+  "11F": { name: "Mr. Yasas Darshana", phone: "077 358 0485" },
 };
 
 const teacherPhotos = {
-    "9A": "https://i.ibb.co/t3CJSq0/10A.jpg", // Replace with actual paths
-    "9B": "https://i.ibb.co/L8LKZs3/10B.jpg",
-    "9C": "https://i.ibb.co/1mkrZtL/10C.jpg",
-    "9D": "https://i.ibb.co/NrFccJ8/10D.png",
-    "9E": "https://i.ibb.co/7pQF1fK/10E.png",
-    "9F": "https://i.ibb.co/TWLprNS/10F.jpg"
+    "11A": "https://i.ibb.co/t3CJSq0/10A.jpg",
+    "11B": "https://i.ibb.co/L8LKZs3/10B.jpg",
+    "11C": "https://i.ibb.co/1mkrZtL/10C.jpg",
+    "11D": "https://i.ibb.co/NrFccJ8/10D.png",
+    "11E": "https://i.ibb.co/7pQF1fK/10E.png",
+    "11F": "https://i.ibb.co/TWLprNS/10F.jpg"
 };
 
 const classTeachers = {
-  "9A": { name: "Mrs. G.N.G Nishani", phone: "07", photoUrl: "https://i.ibb.co/t3CJSq0/10A.jpg" },
-  "9B": { name: "Mrs. Manoja", phone: "077 ", photoUrl: "https://i.ibb.co/L8LKZs3/10B.jpg" },
-  "9C": { name: "Mr. T.H.D Chathulakkana", phone: "077 ", photoUrl: "https://i.ibb.co/1mkrZtL/10C.jpg" },
-  "9D": { name: "Mrs. S Wijekoon", phone: "077 ", photoUrl: "https://i.ibb.co/NrFccJ8/10D.png" },
-  "9E": { name: "Mrs. W. Sewwandi", phone: "077 ", photoUrl: "https://i.ibb.co/7pQF1fK/10E.png" },
-  "9F": { name: "Mrs. Himali Sajeewani", phone: "077 ", photoUrl: "https://i.ibb.co/TWLprNS/10F.jpg" },
+  "11A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163", photoUrl: "https://i.ibb.co/t3CJSq0/10A.jpg" },
+  "11B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947", photoUrl: "https://i.ibb.co/L8LKZs3/10B.jpg" },
+  "11C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515", photoUrl: "https://i.ibb.co/1mkrZtL/10C.jpg" },
+  "11D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733", photoUrl: "https://i.ibb.co/NrFccJ8/10D.png" },
+  "11E": { name: "Mr. Uditha Godagama", phone: "077 722 9242", photoUrl: "https://i.ibb.co/7pQF1fK/10E.png" },
+  "11F": { name: "Mr. Yasas Darshana", phone: "077 358 0485", photoUrl: "https://i.ibb.co/TWLprNS/10F.jpg" },
 };
+
 const classSelect = document.getElementById('class-select');
 const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
 const currentDateElement = document.getElementById('current-date-time');
@@ -744,13 +774,15 @@ const marksColumn = document.getElementById('marks-column');
 const summaryElement = document.getElementById('summary');
 const summaryBelowElement = document.getElementById('summary-below');
 let addingMarks = false;
+
 function updateDateTime() {
     const now = new Date();
-    const formattedDate = now.toISOString().split('T')[0]; // Get YYYY-MM-DD
-    const formattedTime = now.toLocaleTimeString(); // Keep time as is
+    const formattedDate = now.toISOString().split('T')[0];
+    const formattedTime = now.toLocaleTimeString();
     currentDateElement.innerText = `Date: ${formattedDate} Time: ${formattedTime}`;
 }
 setInterval(updateDateTime, 1000);
+
 function getGrade(score) {
   if (score >= 75) return 'A';
   if (score >= 65) return 'B';
@@ -758,6 +790,7 @@ function getGrade(score) {
   if (score >= 35) return 'S';
   return 'W';
 }
+
 function updateSummary() {
   const selectedClass = classSelect.value;
   const totalStudents = students[selectedClass].length;
@@ -773,11 +806,9 @@ function updateSummary() {
   summaryBelowElement.textContent = summaryText;
   teacherNameElement.textContent = `Class Teacher: ${teachers[selectedClass].name}`;
   const teacherPhoto = document.getElementById("teacher-photo");
-    teacherPhoto.src = teacherPhotos[selectedClass];
-    teacherPhoto.style.display = "block"; // Show the photo
+  teacherPhoto.src = teacherPhotos[selectedClass];
+  teacherPhoto.style.display = "block";
 }
-
-
 
 function loadStudents() {
   const selectedClass = classSelect.value;
@@ -828,6 +859,7 @@ function loadStudents() {
   });
   updateSummary();
 }
+
 document.getElementById('clear-data').addEventListener('click', () => {
   const selectedClass = classSelect.value;
   students[selectedClass].forEach(student => {
@@ -835,20 +867,20 @@ document.getElementById('clear-data').addEventListener('click', () => {
   });
   loadStudents();
 });
+
 document.getElementById('get-report').addEventListener('click', () => {
   const selectedClass = classSelect.value;
   const doc = new jsPDF();
   doc.setFontSize(12);
   doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
 
-  const teacher = classTeachers[selectedClass]; // Updated reference
+  const teacher = classTeachers[selectedClass];
   const teacherImageUrl = teacher.photoUrl;
 
-  // Load the image and add it to the PDF
   const img = new Image();
   img.src = teacherImageUrl;
   img.onload = () => {
-    doc.addImage(img, 'JPEG', 160, 4, 28, 31); // Adjust x, y, width, height as needed
+    doc.addImage(img, 'JPEG', 160, 4, 28, 31);
 
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
     doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
@@ -864,7 +896,7 @@ document.getElementById('get-report').addEventListener('click', () => {
         register: student.register,
         name: student.name,
         status: status,
-        rowColor: isPresent ? [204, 255, 204] : [255, 204, 204] // Green for present, Red for absent
+        rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
       });
       if (isPresent) {
         presentCount++;
@@ -888,13 +920,13 @@ document.getElementById('get-report').addEventListener('click', () => {
       margin: { top: 30 },
       styles: { fontSize: 10 },
       headStyles: {
-        fillColor: [0, 0, 0], 
-        textColor: [0, 0, 0],       // Black text
-        fontStyle: 'bold'           // Bold text for headers
+        fillColor: [0, 0, 0],
+        textColor: [0, 0, 0],
+        fontStyle: 'bold'
       },
       didParseCell: (data) => {
         if (data.section === 'head') {
-          data.cell.styles.fillColor = [255, 230, 66]; // Light yellow
+          data.cell.styles.fillColor = [255, 230, 66];
         } else if (data.section === 'body') {
           const rowData = tableData[data.row.index];
           if (rowData && rowData.rowColor) {
@@ -950,6 +982,7 @@ document.getElementById('absent-report').addEventListener('click', () => {
   });
   doc.save(`Absent_Report_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
 });
+
 addMarksButton.addEventListener('click', () => {
   if (!addingMarks) {
     addingMarks = true;
@@ -1005,10 +1038,13 @@ addMarksButton.addEventListener('click', () => {
     });
   }
 });
+
 classSelect.addEventListener('change', () => {
   loadStudents();
 });
+
 loadStudents();
+
 summaryReportButton.addEventListener('click', () => {
     classSelection.style.display = 'block';
 });
@@ -1016,18 +1052,18 @@ summaryReportButton.addEventListener('click', () => {
 generateSummaryButton.addEventListener('click', () => {
     const doc = new jsPDF();
     doc.setFontSize(16);
-    doc.text('Grade 10 Summary Report', 10, 10);
+    doc.text('Grade 11 Summary Report', 10, 10);
     doc.setFontSize(12);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
     doc.text('Section Head - Mr. K.H. Nallaperuma', 10, 30);
 
     const classTeachers = {
-        "10A": { name: "Mrs. N. Preethi Kumari" },
-        "10B": { name: "Mrs. S.T. Indrani" },
-        "10C": { name: "Mrs. Bimba Lamahewa" },
-        "10D": { name: "Mrs. Amali Udayangi" },
-        "10E": { name: "Mr. Uditha Godagama" },
-        "10F": { name: "Mr. Yasas Darshana" }
+        "11A": { name: "Mrs. N. Preethi Kumari" },
+        "11B": { name: "Mrs. S.T. Indrani" },
+        "11C": { name: "Mrs. Bimba Lamahewa" },
+        "11D": { name: "Mrs. Amali Udayangi" },
+        "11E": { name: "Mr. Uditha Godagama" },
+        "11F": { name: "Mr. Yasas Darshana" }
     };
 
     let summaryData = [];
@@ -1059,7 +1095,7 @@ generateSummaryButton.addEventListener('click', () => {
     doc.autoTable({
         head: [['Class', 'Class Teacher', 'Total Students', 'Present', 'Absent']],
         body: summaryData,
-        startY: 40, // Adjusted startY to account for the additional text
+        startY: 40,
         styles: { fillColor: [221, 235, 247], textColor: [0, 0, 0] },
         headStyles: { fillColor: [36, 180, 171], textColor: [255, 255, 255] },
     });
@@ -1084,14 +1120,13 @@ generateSummaryButton.addEventListener('click', () => {
         tableLineWidth: 0.5
     });
 
-    doc.save(`Grade_10_Summary_Report_${new Date().toLocaleDateString()}.pdf`);
+    doc.save(`Grade_11_Summary_Report_${new Date().toLocaleDateString()}.pdf`);
 
     classSelection.style.display = 'none';
 });
 
 classSelect.addEventListener('change', loadStudents);
 loadStudents();
-
 
 </script>
 </body>
