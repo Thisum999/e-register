@@ -349,18 +349,18 @@
 <body>
 <div id="app-container">
     <h1>MCG E-Register</h1>
-    <h2>Grade 11 - 2025</h2>
+    <h2>Grade 9 - 2025</h2>
     <div class="teacher-name" id="teacher-name"></div>
     <img id="teacher-photo" src="10A-10.jfif" alt="Teacher's Photo" style="display: none;" />
     <div id="current-date-time"></div>
     <label for="class-select">Select Class:</label>
     <select id="class-select">
-        <option value="11A">11A</option>
-        <option value="11B">11B</option>
-        <option value="11C">11C</option>
-        <option value="11D">11D</option>
-        <option value="11E">11E</option>
-        <option value="11F">11F</option>
+        <option value="9A">9A</option>
+        <option value="9B">9B</option>
+        <option value="9C">9C</option>
+        <option value="9D">9D</option>
+        <option value="9E">9E</option>
+        <option value="9F">9F</option>
     </select>
     <div id="subject-container" style="display: none;">
         <label for="subject-select">Select Subject:</label>
@@ -371,6 +371,16 @@
             <option value="Science">Science</option>
             <option value="Buddhism">Buddhism</option>
             <option value="History">History</option>
+            <option value="Geogrophy">Geogrophy</option>
+            <option value="Civic Education">Civic Education</option>
+            <option value="Health">Health</option>
+            <option value="Tamil">Tamil</option>
+            <option value="PTS">PTS</option>
+            <option value="Aesthetic">Aesthetic</option>
+
+
+
+
         </select>
     </div>
     <div id="summary"></div>
@@ -395,12 +405,12 @@
     <button id="summary-report" class="button">Summary Report</button>
     <button id="add-marks" class="button">Add Marks</button>
     <div id="classSelection" style="display: none;">
-        <label><input type="checkbox" value="11A"> 11A</label>
-        <label><input type="checkbox" value="11B"> 11B</label>
-        <label><input type="checkbox" value="11C"> 11C</label>
-        <label><input type="checkbox" value="11D"> 11D</label>
-        <label><input type="checkbox" value="11E"> 11E</label>
-        <label><input type="checkbox" value="11F"> 11F</label>
+        <label><input type="checkbox" value="9A"> 9A</label>
+        <label><input type="checkbox" value="9B"> 9B</label>
+        <label><input type="checkbox" value="9C"> 9C</label>
+        <label><input type="checkbox" value="9D"> 9D</label>
+        <label><input type="checkbox" value="9E"> 9E</label>
+        <label><input type="checkbox" value="9F"> 9F</label>
         <br>
         <button id="generate-summary" class="button">Generate Selected Summary Report</button>
     </div>
@@ -410,7 +420,7 @@
 <script>
 const { jsPDF } = window.jspdf;
 const students = {            
-    '11A': [
+    '9A': [
         { 'register': '01', 'name': 'N. B. P. Jayanu Bigusara' },
         { 'register': '02', 'name': 'Rasanga Munaveera' },
         { 'register': '03', 'name': 'K. G. Sadun Sithija' },
@@ -734,30 +744,30 @@ const students = {
         };
 
 const teachers = {
-  "11A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163" },
-  "11B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947" },
-  "11C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515" },
-  "11D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733" },
-  "11E": { name: "Mr. Uditha Godagama", phone: "077 722 9242" },
-  "11F": { name: "Mr. Yasas Darshana", phone: "077 358 0485" },
+  "9A": { name: "Mrs. G.N.G Nishani", phone: "073" },
+  "9B": { name: "Mrs. Manoja", phone: "0777" },
+  "9C": { name: "Mr. T.H.D Chathulakkana", phone: "077 15" },
+  "9D": { name: "Mrs. S Wijekoon", phone: "077 553" },
+  "9E": { name: "Mrs. W. Sewwandi", phone: "077 72" },
+  "9F": { name: "Mrs. Himali Sajeewani", phone: "485" },
 };
 
 const teacherPhotos = {
-    "11A": "https://i.ibb.co/t3CJSq0/10A.jpg",
-    "11B": "https://i.ibb.co/L8LKZs3/10B.jpg",
-    "11C": "https://i.ibb.co/1mkrZtL/10C.jpg",
-    "11D": "https://i.ibb.co/NrFccJ8/10D.png",
-    "11E": "https://i.ibb.co/7pQF1fK/10E.png",
-    "11F": "https://i.ibb.co/TWLprNS/10F.jpg"
+    "9A": "https://i.ibb.co/t3CJSq0/10A.jpg",
+    "9B": "https://i.ibb.co/L8LKZs3/10B.jpg",
+    "9C": "https://i.ibb.co/1mkrZtL/10C.jpg",
+    "9D": "https://i.ibb.co/NrFccJ8/10D.png",
+    "9E": "https://i.ibb.co/7pQF1fK/10E.png",
+    "9F": "https://i.ibb.co/TWLprNS/10F.jpg"
 };
 
 const classTeachers = {
-  "11A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163", photoUrl: "https://i.ibb.co/t3CJSq0/10A.jpg" },
-  "11B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947", photoUrl: "https://i.ibb.co/L8LKZs3/10B.jpg" },
-  "11C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515", photoUrl: "https://i.ibb.co/1mkrZtL/10C.jpg" },
-  "11D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733", photoUrl: "https://i.ibb.co/NrFccJ8/10D.png" },
-  "11E": { name: "Mr. Uditha Godagama", phone: "077 722 9242", photoUrl: "https://i.ibb.co/7pQF1fK/10E.png" },
-  "11F": { name: "Mr. Yasas Darshana", phone: "077 358 0485", photoUrl: "https://i.ibb.co/TWLprNS/10F.jpg" },
+  "9A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163", photoUrl: "https://i.ibb.co/t3CJSq0/10A.jpg" },
+  "9B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947", photoUrl: "https://i.ibb.co/L8LKZs3/10B.jpg" },
+  "9C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515", photoUrl: "https://i.ibb.co/1mkrZtL/10C.jpg" },
+  "9D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733", photoUrl: "https://i.ibb.co/NrFccJ8/10D.png" },
+  "9E": { name: "Mr. Uditha Godagama", phone: "077 722 9242", photoUrl: "https://i.ibb.co/7pQF1fK/10E.png" },
+  "9F": { name: "Mr. Yasas Darshana", phone: "077 358 0485", photoUrl: "https://i.ibb.co/TWLprNS/10F.jpg" },
 };
 
 const classSelect = document.getElementById('class-select');
@@ -1058,12 +1068,12 @@ generateSummaryButton.addEventListener('click', () => {
     doc.text('Section Head - Mr. K.H. Nallaperuma', 10, 30);
 
     const classTeachers = {
-        "11A": { name: "Mrs. N. Preethi Kumari" },
-        "11B": { name: "Mrs. S.T. Indrani" },
-        "11C": { name: "Mrs. Bimba Lamahewa" },
-        "11D": { name: "Mrs. Amali Udayangi" },
-        "11E": { name: "Mr. Uditha Godagama" },
-        "11F": { name: "Mr. Yasas Darshana" }
+        "9A": { name: "Mrs. N. Preethi Kumari" },
+        "9B": { name: "Mrs. S.T. Indrani" },
+        "9C": { name: "Mrs. Bimba Lamahewa" },
+        "9D": { name: "Mrs. Amali Udayangi" },
+        "9E": { name: "Mr. Uditha Godagama" },
+        "9F": { name: "Mr. Yasas Darshana" }
     };
 
     let summaryData = [];
