@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCG E-Register</title>
+  <style>
+    :root {
+      --brand: #ffc300;
+      --accent: #0b65da;
+      --bg: #e0f7fa;
+      --card: #ffffff;
+      --text: #000211;
+      --good: #4caf50;
+      --bad: #f44336;
+      --muted: #607d8b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg);
+      transition: background-color 0.5s;
+    }
+
+    /* Header/Nav */
+    header {
+      background-color: var(--brand);
+      padding: 8px 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #1610d7; }
+
+    /* Footer */
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      color: #000000;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px;
+      z-index: 1000;
+    }
+    #footer a { color: #001aff; text-decoration: none; font-weight: bold; }
+    #footer a:hover { text-decoration: underline; }
+
+    /* Card */
+    #app-container {
+      max-width: 900px;
+      margin: 90px auto 80px; /* leave space for fixed header & footer */
+      padding: 30px;
+      background-color: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      transition: transform 0.3s;
+    }
+    #app-container:hover { transform: scale(1.02); }
+
+    #school-logo {
+      width: 100px;
+      height: auto;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 10;
+    }
+
+    .teacher-info { position: absolute; top: 16px; right: 16px; text-align: right; }
+    .teacher-name { font-size: 14px; font-weight: 700; color: #e96d15e7; margin-top: 6px; }
+    #teacher-photo { width: 90px; height: auto; border-radius: 6px; display: block; margin-left: auto; }
+
+    h1 {
+      color: #ffcc00;
+      text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+      background-color: #ffffff;
+      border-radius: 8px;
+      font-size: 2.2rem;
+      margin: 8px 0 2px;
+      letter-spacing: 1.2px;
+    }
+    h2 {
+      color: #ffcc00;
+      text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+      font-size: 1.3rem;
+      margin: 6px 0 12px;
+      padding: 5px;
+    }
+
+    #current-date-time { font-weight: bold; margin-bottom: 16px; color: var(--accent); }
+
+    select, table {
+      margin: 10px 0;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #b2ebf2;
+      transition: border-color 0.3s;
+    }
+    select:focus, table:focus { border-color: #00bcd4; }
+
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+
+    .button {
+      padding: 12px 18px;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 10px 6px;
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    #get-report { background-color: var(--good); color: #fff; }
+    #clear-data { background-color: var(--bad); color: #fff; }
+
+    .custom-checkbox {
+      position: relative; display: inline-block; width: 20px; height: 20px;
+      border: 2px solid #ccc; border-radius: 4px; cursor: pointer; background: #fff; margin-right: 10px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .custom-checkbox.checked { background-color: #c8e6c9; border-color: var(--good); }
+
+    #summary, #summary-below { margin: 10px 0; font-weight: bold; color: #00796b; }
+
+    @media (max-width: 768px) {
+      body { font-size: 14px; padding: 10px; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.2rem; }
+      #school-logo { width: 72px; left: 10px; top: 10px; }
+      #teacher-photo { width: 72px; }
+      .teacher-name { font-size: 13px; }
+      table { font-size: 12px; }
+      th, td { padding: 8px; }
+      .button { padding: 10px 14px; font-size: 14px; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav-links">
+      <a href="intro.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main Card -->
+  <div id="app-container">
+    <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="school-logo" />
+
+
+
+    <h1>MCG E-Register</h1>
+    <h2>Grade 11 - 2025</h2>
+
+    <div id="current-date-time"></div>
+
+    <label for="class-select">Select Section:</label>
+    <select id="class-select">
+      <option value="G11">Grade 11</option>
+      <option value="G10">Grade 10</option>
+    </select>
+
+    <div id="summary"></div>
+
+    <table id="attendance-table">
+      <thead>
+        <tr>
+          <th>Mark</th>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="summary-below"></div>
+
+    <div style="margin-top: 6px;">
+      <button id="clear-data" class="button">Clear Data</button>
+      <button id="get-report" class="button">Get Report</button>
+    </div>
+
+    <div id="classSelection" style="display:none;">
+      <label><input type="checkbox" value="G11" /> Grade 11</label>
+      <label><input type="checkbox" value="G10" /> Grade 10</label>
+      <br />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.36/jspdf.plugin.autotable.min.js"></script>
+  <script src="jspdf.plugin.autotable.min.js"></script>
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    /* ----------------------------- Data ----------------------------- */
+    const students = {
+      G11: [
+        { register: '01', name: 'K.H. Nallaperuma' },
+        { register: '02', name: 'Amaila Chathurika' },
+        { register: '03', name: 'N. Preethi Kumari' },
+        { register: '04', name: 'S.T. Indrani' },
+        { register: '05', name: 'Bimba Lamahewa' },
+        { register: '06', name: 'Amali Udayangi' },
+        { register: '07', name: 'Uditha Godagama' },
+        { register: '08', name: 'U.G.R. Dilrukshi' }
+      ],
+      G10: [
+        { register: '01', name: 'Student A' },
+        { register: '02', name: 'Student B' },
+        { register: '03', name: 'Student C' }
+      ]
+    };
+
+    const classTeachers = {
+      G11: { name: 'Mrs. N. Preethi Kumari', phone: '071 225 9163', photoUrl: 'https://i.ibb.co/t3Cq0/10A.jpg' },
+      G10: { name: 'Mrs. S.T. Indrani', phone: '077 603 6947', photoUrl: 'https://i.ibb.co/L8Zs3/10B.jpg' }
+    };
+
+    /* --------------------------- Elements --------------------------- */
+    const classSelect = document.getElementById('class-select');
+    const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
+    const currentDateElement = document.getElementById('current-date-time');
+    const teacherNameElement = document.getElementById('teacher-name');
+
+    const clearBtn = document.getElementById('clear-data');
+    const reportBtn = document.getElementById('get-report');
+
+    /* --------------------------- Utilities -------------------------- */
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toISOString().split('T')[0];
+      const time = now.toLocaleTimeString();
+      currentDateElement.textContent = `Date: ${date}  Time: ${time}`;
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    function storageKey(cls, reg) { return `ATTEND_${cls}_${reg}`; }
+
+    function updateSummary() {
+      const selectedClass = classSelect.value;
+      const list = students[selectedClass] || [];
+      const total = list.length;
+      let present = 0;
+      list.forEach(st => { if (localStorage.getItem(storageKey(selectedClass, st.register))) present++; });
+      const absent = total - present;
+      const text = `Total Teachers: ${total} | Present: ${present} | Absent: ${absent}`;
+      document.getElementById('summary').textContent = text;
+      document.getElementById('summary-below').textContent = text;
+
+      const t = classTeachers[selectedClass];
+      if (t) {
+        teacherNameElement.textContent = `Class Teacher: ${t.name}`;
+        teacherPhotoEl.src = t.photoUrl || '';
+        teacherPhotoEl.style.display = t.photoUrl ? 'block' : 'none';
+      } else {
+        teacherNameElement.textContent = 'Class Teacher: —';
+        teacherPhotoEl.style.display = 'none';
+      }
+    }
+
+    function loadStudents() {
+      const selectedClass = classSelect.value;
+      attendanceTable.innerHTML = '';
+      const list = students[selectedClass] || [];
+
+      list.forEach(student => {
+        const row = attendanceTable.insertRow();
+        const markCell = row.insertCell(0);
+        const registerCell = row.insertCell(1);
+        const nameCell = row.insertCell(2);
+        const timeCell = row.insertCell(3);
+
+        const checkbox = document.createElement('div');
+        checkbox.className = 'custom-checkbox';
+
+        const saved = localStorage.getItem(storageKey(selectedClass, student.register));
+        if (saved) {
+          checkbox.classList.add('checked');
+          timeCell.textContent = saved;
+        }
+
+        checkbox.addEventListener('click', () => {
+          const nowChecked = !checkbox.classList.contains('checked');
+          checkbox.classList.toggle('checked');
+          if (nowChecked) {
+            const time = new Date().toLocaleTimeString();
+            timeCell.textContent = time;
+            localStorage.setItem(storageKey(selectedClass, student.register), time);
+          } else {
+            timeCell.textContent = '';
+            localStorage.removeItem(storageKey(selectedClass, student.register));
+          }
+          updateSummary();
+        });
+
+        markCell.appendChild(checkbox);
+        registerCell.textContent = student.register;
+        nameCell.textContent = student.name;
+      });
+
+      updateSummary();
+    }
+
+    /* --------------------------- Actions ---------------------------- */
+    clearBtn.addEventListener('click', () => {
+      const selectedClass = classSelect.value;
+      (students[selectedClass] || []).forEach(st => {
+        localStorage.removeItem(storageKey(selectedClass, st.register));
+      });
+      loadStudents();
+    });
+
+    reportBtn.addEventListener('click', () => {
+      try {
+        const selectedClass = classSelect.value;
+        const doc = new jsPDF();
+        doc.setFontSize(12);
+        doc.text(`Teachers Attendance Report - Class ${selectedClass}`, 15, 15);
+
+        const teacher = classTeachers[selectedClass] || { name: '—', photoUrl: '' };
+        if (teacher.photoUrl) {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.src = teacher.photoUrl;
+          img.onload = () => {
+            try {
+              doc.addImage(img, 'JPEG', 160, 4, 28, 31);
+            } catch (e) {
+              console.error('Error adding image to PDF:', e);
+            }
+            buildAttendanceTable(doc);
+          };
+          img.onerror = () => {
+            console.warn('Failed to load teacher photo, proceeding without it.');
+            buildAttendanceTable(doc);
+          };
+        } else {
+          buildAttendanceTable(doc);
+        }
+      } catch (e) {
+        console.error('Error generating PDF:', e);
+        alert('Failed to generate the report. Please check the console for details.');
+      }
+    });
+
+    function buildAttendanceTable(doc) {
+      const selectedClass = classSelect.value;
+      const teacher = classTeachers[selectedClass] || { name: '—' };
+      doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+
+      const tableData = [];
+      let presentCount = 0;
+      const list = students[selectedClass] || [];
+
+      list.forEach(st => {
+        const present = !!localStorage.getItem(storageKey(selectedClass, st.register));
+        tableData.push({
+          register: st.register,
+          name: st.name,
+          status: present ? 'Present' : 'Absent',
+          rowColor: present ? [204, 255, 204] : [255, 204, 204]
+        });
+        if (present) presentCount++;
+      });
+
+      const total = list.length;
+      const absent = total - presentCount;
+      doc.text(`Total Teachers: ${total}  Present: ${presentCount}  Absent: ${absent}`, 15, 35);
+
+      const columns = [
+        { header: 'Number', dataKey: 'register' },
+        { header: 'Name', dataKey: 'name' },
+        { header: 'Attendance Status', dataKey: 'status' }
+      ];
+
+      doc.autoTable({
+        columns,
+        body: tableData,
+        startY: 55,
+        theme: 'grid',
+        margin: { top: 30 },
+        styles: { fontSize: 10 },
+        headStyles: { fillColor: [0, 0, 0], textColor: [0, 0, 0], fontStyle: 'bold' },
+        didParseCell: data => {
+          if (data.section === 'head') {
+            data.cell.styles.fillColor = [255, 230, 66];
+          } else if (data.section === 'body') {
+            const rowData = tableData[data.row.index];
+            if (rowData?.rowColor) data.cell.styles.fillColor = rowData.rowColor;
+          }
+        },
+        didDrawPage: data => {
+          doc.setFontSize(10);
+          doc.text(`Page ${data.pageNumber}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+        }
+      });
+
+      doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`);
+    }
+
+    classSelect.addEventListener('change', loadStudents);
+
+    // initial load
+    loadStudents();
+  </script>
+</body>
+</html>
