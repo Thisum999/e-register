@@ -818,15 +818,11 @@ document.getElementById('get-report').addEventListener('click', () => {
   doc.setFontSize(12);
   doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
 
-  const teacher = classTeachers[selectedClass]; // Updated reference
-  const teacherImageUrl = teacher.photoUrl;
+  const teacher = classTeachers[selectedClass]; // Reference classTeachers for teacher details
+  const teacherImageUrl = teacherPhotos[selectedClass]; // Reference teacherPhotos for photo URL
 
-  // Load the image and add it to the PDF
-  const img = new Image();
-  img.src = teacherImageUrl;
-  img.onload = () => {
-    doc.addImage(img, 'JPEG', 160, 4, 28, 31); // Adjust x, y, width, height as needed
-
+  // Function to generate the PDF content
+  const generatePDF = () => {
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
     doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
 
@@ -865,9 +861,9 @@ document.getElementById('get-report').addEventListener('click', () => {
       margin: { top: 30 },
       styles: { fontSize: 10 },
       headStyles: {
-        fillColor: [0, 0, 0], 
-        textColor: [0, 0, 0],       // Black text
-        fontStyle: 'bold'           // Bold text for headers
+        fillColor: [0, 0, 0],
+        textColor: [0, 0, 0],
+        fontStyle: 'bold'
       },
       didParseCell: (data) => {
         if (data.section === 'head') {
@@ -887,6 +883,22 @@ document.getElementById('get-report').addEventListener('click', () => {
 
     doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
   };
+
+  // Check if there’s a valid teacher image URL
+  if (teacherImageUrl) {
+    const img = new Image();
+    img.src = teacherImageUrl;
+    img.onload = () => {
+      doc.addImage(img, 'JPEG', 160, 4, 28, 31); // Add image if it loads successfully
+      generatePDF();
+    };
+    img.onerror = () => {
+      console.warn('Teacher image failed to load, generating PDF without image.');
+      generatePDF(); // Proceed without the image
+    };
+  } else {
+    generatePDF(); // No image URL, proceed directly to PDF generation
+  }
 });
 
 document.getElementById('absent-report').addEventListener('click', () => {
@@ -1073,3 +1085,4 @@ loadStudents();
 </script>
 </body>
 </html>
+
