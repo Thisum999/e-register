@@ -99,15 +99,6 @@
             z-index: 10;
         }
 
-        #teacher-photo {
-            width: 100px;
-            height: auto;
-            position: absolute;
-            top: 65px;
-            right: 50px;
-            z-index: 10;
-        }
-
         #app-container:hover {
             transform: scale(1.02);
         }
@@ -259,16 +250,6 @@
             color: #e96d15e7;
         }
 
-        #teacher-photo {
-            width: 100px;
-            height: auto;
-            margin-top: 10px;
-            border-radius: 5px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         @media only screen and (max-width: 768px) {
             body {
                 font-size: 14px;
@@ -287,12 +268,6 @@
                 width: 80px;
                 left: 10px;
                 top: 40px;
-            }
-
-            #teacher-photo {
-                width: 80px;
-                top: 8.2px;
-                right: 6.8px;
             }
 
             .teacher-name {
@@ -345,7 +320,6 @@
     <h1>MCG E-Register</h1>
     <h2>9A's Squad - 2025</h2>
     <div class="teacher-name" id="teacher-name">Class Teacher: Mr. K.H. Nallaperuma</div>
-    <img id="teacher-photo" src="https://i.ibb.co/7pQF1fK/10E.png" alt="Teacher's Photo" style="display: block;" />
     <div id="current-date-time"></div>
     <div id="subject-container">
         <label for="subject-select">Select Subject:</label>
@@ -512,8 +486,7 @@ const students = {
 
 const teacher = {
     name: "Mr. K.H. Nallaperuma",
-    phone: "077 722 9242",
-    photoUrl: "https://i.ibb.co/7pQF1fK/10E.png"
+    phone: "077 722 9242"
 };
 
 const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
@@ -556,9 +529,6 @@ function updateSummary() {
     summaryElement.textContent = summaryText;
     summaryBelowElement.textContent = summaryText;
     teacherNameElement.textContent = `Class Teacher: ${teacher.name}`;
-    const teacherPhoto = document.getElementById("teacher-photo");
-    teacherPhoto.src = teacher.photoUrl;
-    teacherPhoto.style.display = "block";
 }
 
 function loadStudents() {
@@ -621,72 +591,64 @@ document.getElementById('get-report').addEventListener('click', () => {
     const doc = new jsPDF();
     doc.setFontSize(12);
     doc.text(`Attendance Report - Class 9A's Squad`, 15, 15);
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
 
-    const img = new Image();
-    img.src = teacher.photoUrl;
-    img.onload = () => {
-        doc.addImage(img, 'JPEG', 160, 4, 28, 31);
+    let tableData = [];
+    const totalStudents = students["9A's Squad"].length;
+    let presentCount = 0;
 
-        doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
-        doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
-
-        let tableData = [];
-        const totalStudents = students["9A's Squad"].length;
-        let presentCount = 0;
-
-        students["9A's Squad"].forEach(student => {
-            const isPresent = localStorage.getItem(`9A's Squad-${student.register}`);
-            const status = isPresent ? `Present` : 'Absent';
-            tableData.push({
-                register: student.register,
-                name: student.name,
-                status: status,
-                rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
-            });
-            if (isPresent) {
-                presentCount++;
-            }
+    students["9A's Squad"].forEach(student => {
+        const isPresent = localStorage.getItem(`9A's Squad-${student.register}`);
+        const status = isPresent ? `Present` : 'Absent';
+        tableData.push({
+            register: student.register,
+            name: student.name,
+            status: status,
+            rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
         });
+        if (isPresent) {
+            presentCount++;
+        }
+    });
 
-        const absentCount = totalStudents - presentCount;
-        doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
+    const absentCount = totalStudents - presentCount;
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
 
-        const columns = [
-            { header: 'Register Number', dataKey: 'register' },
-            { header: 'Name', dataKey: 'name' },
-            { header: 'Attendance Status', dataKey: 'status' }
-        ];
+    const columns = [
+        { header: 'Register Number', dataKey: 'register' },
+        { header: 'Name', dataKey: 'name' },
+        { header: 'Attendance Status', dataKey: 'status' }
+    ];
 
-        doc.autoTable({
-            columns: columns,
-            body: tableData,
-            startY: 44,
-            theme: 'grid',
-            margin: { top: 30 },
-            styles: { fontSize: 8 },
-            headStyles: {
-                fillColor: [0, 0, 0],
-                textColor: [0, 0, 0],
-                fontStyle: 'bold'
-            },
-            didParseCell: (data) => {
-                if (data.section === 'head') {
-                    data.cell.styles.fillColor = [255, 230, 66];
-                } else if (data.section === 'body') {
-                    const rowData = tableData[data.row.index];
-                    if (rowData && rowData.rowColor) {
-                        data.cell.styles.fillColor = rowData.rowColor;
-                    }
+    doc.autoTable({
+        columns: columns,
+        body: tableData,
+        startY: 44,
+        theme: 'grid',
+        margin: { top: 30 },
+        styles: { fontSize: 8 },
+        headStyles: {
+            fillColor: [0, 0, 0],
+            textColor: [0, 0, 0],
+            fontStyle: 'bold'
+        },
+        didParseCell: (data) => {
+            if (data.section === 'head') {
+                data.cell.styles.fillColor = [255, 230, 66];
+            } else if (data.section === 'body') {
+                const rowData = tableData[data.row.index];
+                if (rowData && rowData.rowColor) {
+                    data.cell.styles.fillColor = rowData.rowColor;
                 }
-            },
-            didDrawPage: (data) => {
-                doc.setFontSize(10);
-                doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
             }
-        });
+        },
+        didDrawPage: (data) => {
+            doc.setFontSize(10);
+            doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+        }
+    });
 
-        doc.save(`Attendance_9As_Squad_${new Date().toLocaleDateString()}.pdf`);
-    };
+    doc.save(`Attendance_9As_Squad_${new Date().toLocaleDateString()}.pdf`);
 });
 
 document.getElementById('absent-report').addEventListener('click', () => {
@@ -694,7 +656,6 @@ document.getElementById('absent-report').addEventListener('click', () => {
     doc.setFontSize(12);
     doc.text(`Absent Report - Class 9A's Squad`, 10, 10);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-    doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
     let tableData = [];
     const totalStudents = students["9A's Squad"].length;
     let presentCount = 0;
@@ -743,7 +704,6 @@ addMarksButton.addEventListener('click', () => {
         const selectedSubject = subjectSelect.value;
         doc.text(`Marks Report for ${selectedSubject} - Class 9A's Squad`, 10, 10);
         doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-        doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
         let tableData = [];
         let totalStudents = students["9A's Squad"].length;
         let presentCount = 0;
