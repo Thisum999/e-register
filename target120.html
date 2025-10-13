@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <header>
-    <div class="nav-links">
-        <a href="intro.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCG E-Register</title>
+    <header>
+        <div class="nav-links">
+            <a href="intro.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </header>
     <div id="footer">
-      Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
+        Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
     </div>
     <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="school-logo">
     <style>
@@ -25,66 +25,59 @@
             transition: background-color 0.5s;
         }
 
-        #name{
-          bottom: 0px;
+        header {
+            background-color: #ffc300;
+            padding: 0.5px 0.5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
-        header {
-    background-color: #ffc300;
-    padding: 0.5px 0.5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-.nav-links {
-    display: flex;
-    justify-content: center; /* This centers the navigation links */
-    gap: 20px;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: #000211;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
 
-.nav-links a {
-    text-decoration: none;
-    color: #000211;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
+        .nav-links a:hover {
+            color: #1610d7;
+        }
 
-.nav-links a:hover {
-    color: #1610d7;
-}
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 1px;
+            z-index: 100;
+        }
 
-        /* Footer Styles */
-#footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 1px;
-    z-index: 100;
-}
+        #footer a {
+            color: #001aff;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-#footer a {
-    color: #001aff;
-    text-decoration: none;
-    font-weight: bold;
-    outline: #000000;
-}
-
-#footer a:hover {
-    text-decoration: underline;
-}
-
+        #footer a:hover {
+            text-decoration: underline;
+        }
 
         #app-container {
             max-width: 800px;
@@ -105,7 +98,7 @@
             left: 126px;
             z-index: 10;
         }
-        
+
         #teacher-photo {
             width: 100px;
             height: auto;
@@ -163,6 +156,13 @@
             border-color: #00bcd4;
         }
 
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -171,7 +171,7 @@
         th,
         td {
             border: 1px solid #ddd;
-            padding: 12px;
+            padding: 8px;
             text-align: left;
         }
 
@@ -195,16 +195,10 @@
             color: white;
         }
 
-        #summary-report {
-            background-color: #2196f3;
-            color: white;
-        }
-
         #add-marks {
             background-color: #ffeb3b;
             color: black;
         }
-
 
         #absent-report {
             background-color: #607d8b;
@@ -266,103 +260,94 @@
         }
 
         #teacher-photo {
-            width: 100px; /* Adjust the size as needed */
-            height: auto; /* Maintain aspect ratio */
-            margin-top: 10px; /* Space between the name and the photo */
-            border-radius: 5px; /* Optional: rounded corners */
-            display: block; /* Display as a block element */
-            margin-left: auto; /* Center the image */
-            margin-right: auto; /* Center the image */
+            width: 100px;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media only screen and (max-width: 768px) {
-    body {
-        font-size: 14px;
-        padding: 10px;
-    }
+            body {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-    
+            h1 {
+                font-size: 1.8rem;
+            }
 
-    h1 {
-        font-size: 1.8rem;
-    }
+            h2 {
+                font-size: 1.2rem;
+            }
 
-    h2 {
-        font-size: 1.2rem;
-    }
+            #school-logo {
+                width: 80px;
+                left: 10px;
+                top: 40px;
+            }
 
-    #school-logo {
-        width: 80px;
-        left: 10px;
-        top: 40px;
-    }
+            #teacher-photo {
+                width: 80px;
+                top: 8.2px;
+                right: 6.8px;
+            }
 
-    #teacher-photo {
-        width: 80px;
-        top: 8.2px;
-        right: 6.8px;
-    }
+            .teacher-name {
+                position: absolute;
+                top: 136px;
+                font-size: 14px;
+                font-weight: bold;
+                color: #e96d15e7;
+                left: 20px;
+            }
 
-    .teacher-name {
-            position: absolute;
-            top: 136px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #e96d15e7;
-            left: 20px;
+            #current-date-time {
+                font-size: 12px;
+                font-weight: bold;
+                color: #0b65da;
+                top: 258px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+
+            .button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .table-container {
+                max-height: 300px;
+            }
         }
 
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
 
-    #current-date-time {
-            font-size: 12px;
-            font-weight: bold;
-            color: #0b65da;
-            top: 258px;
+            h2 {
+                font-size: 1rem;
+            }
         }
-
-    table {
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-
-    .button {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1rem;
-    }
-}
-    
     </style>
 </head>
 <body>
 <div id="app-container">
     <h1>MCG E-Register</h1>
-    <h2>Grade 11 - 2025</h2>
-    <div class="teacher-name" id="teacher-name"></div>
-    <img id="teacher-photo" src="10A-10.jfif" alt="Teacher's Photo" style="display: none;" />
+    <h2>9A's Squad - 2025</h2>
+    <div class="teacher-name" id="teacher-name">Class Teacher: Mr. K.H. Nallaperuma</div>
+    <img id="teacher-photo" src="https://i.ibb.co/7pQF1fK/10E.png" alt="Teacher's Photo" style="display: block;" />
     <div id="current-date-time"></div>
-    <label for="class-select">Select Class:</label>
-    <select id="class-select">
-        <option value="11A">11A</option>
-        <option value="11B">11B</option>
-        <option value="11C">11C</option>
-        <option value="11D">11D</option>
-        <option value="11E">11E</option>
-        <option value="11F">11F</option>
-    </select>
-    <div id="subject-container" style="display: none;">
+    <div id="subject-container">
         <label for="subject-select">Select Subject:</label>
         <select id="subject-select">
             <option value="Sinhala">Sinhala</option>
@@ -374,199 +359,166 @@
         </select>
     </div>
     <div id="summary"></div>
-    <table id="attendance-table">
-        <thead>
-            <tr>
-                <th>Mark</th>
-                <th>Register Number</th>
-                <th>Name</th>
-                <th>Time</th>
-                <th id="marks-column" style="display: none;">Marks</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Student rows will be added here dynamically -->
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table id="attendance-table">
+            <thead>
+                <tr>
+                    <th>Mark</th>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Time</th>
+                    <th id="marks-column" style="display: none;">Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Student rows will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
     <div id="summary-below"></div>
     <button id="clear-data" class="button">Clear Data</button>
     <button id="get-report" class="button">Get Report</button>
     <button id="absent-report" class="button">Absent Report</button>
-    <button id="summary-report" class="button">Summary Report</button>
     <button id="add-marks" class="button">Add Marks</button>
-    <div id="classSelection" style="display: none;">
-        <label><input type="checkbox" value="11A"> 11A</label>
-        <label><input type="checkbox" value="11B"> 11B</label>
-        <label><input type="checkbox" value="11C"> 11C</label>
-        <label><input type="checkbox" value="11D"> 11D</label>
-        <label><input type="checkbox" value="11E"> 11E</label>
-        <label><input type="checkbox" value="11F"> 11F</label>
-        <br>
-        <button id="generate-summary" class="button">Generate Selected Summary Report</button>
-    </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
 <script>
 const { jsPDF } = window.jspdf;
-const students = 
-    { "register": "A01", "name": "D.W. Minindu Pabasara" },
-    { "register": "A04", "name": "W.G. Helajith Dinujaya" },
-    { "register": "A05", "name": "M.G. Aken Yensitha" },
-    { "register": "A06", "name": "G. Sadila Bonuka" },
-    { "register": "A16", "name": "P. Hirun Mindeepa" },
-    { "register": "A19", "name": "G.W. Theres De Silva" },
-    { "register": "A29", "name": "A. Nethsara Chithhan" },
-    { "register": "A30", "name": "T.A. Vidusun Nethsara" },
-    { "register": "A34", "name": "V.A.A.P. Bihara" },
-    { "register": "A35", "name": "M.H.I. Dewdunu" },
-    { "register": "A36", "name": "D. Maleesha Nethsara" },
-    { "register": "A37", "name": "A.M.S.S. Dahampath" },
-    { "register": "A40", "name": "D.D. Gangul Randima" },
-    { "register": "A41", "name": "L.A.K. Dilshan" },
-    { "register": "A42", "name": "E.D.S. Moshitha" },
-    { "register": "A43", "name": "H.T.T. Nethsara" },
-    { "register": "A44", "name": "H.A. Manaram Thathsara" },
-    { "register": "A45", "name": "W.A.K. Naveen Nimsara" },
-    { "register": "A46", "name": "M.D.H.V. Priyasardhana" },
-    { "register": "A47", "name": "J. Ruvidu Hansana" },
-    { "register": "A50", "name": "D.R. Methuja" },
-    { "register": "B02", "name": "K.A. Navindu Siwhas" },
-    { "register": "B03", "name": "K.M. Kalana Sandeepa" },
-    { "register": "B04", "name": "U.A. Hasod Himakara" },
-    { "register": "B06", "name": "A.J. Abhiman Jayasinghe" },
-    { "register": "B08", "name": "K.G. Sajana Kithmina" },
-    { "register": "B17", "name": "Y. Rakmitha Samaraweeraarachchi" },
-    { "register": "B20", "name": "H.G. Rithira Handisu" },
-    { "register": "B22", "name": "A.K. Ashen Shavidu" },
-    { "register": "B30", "name": "L.G. Okindu Wathmira" },
-    { "register": "B32", "name": "K.K. Nethindu Thaminda" },
-    { "register": "B34", "name": "N.A.C.H. Wijenayaka" },
-    { "register": "B36", "name": "M.D. Ranidu Pramod" },
-    { "register": "B37", "name": "D.M. Thisum Jalitha" },
-    { "register": "B38", "name": "D.G. Nadith Nethsara" },
-    { "register": "B39", "name": "W.D. Madhuka Shyamal" },
-    { "register": "B43", "name": "A.I. Withanawasam" },
-    { "register": "B44", "name": "G.K. Thasith Thanuwara" },
-    { "register": "B45", "name": "L. Yashod Lasal" },
-    { "register": "B47", "name": "M.G.S. Sithumjith" },
-    { "register": "C09", "name": "Saviru Thuduwage" },
-    { "register": "C15", "name": "Binara W. Weerasekara" },
-    { "register": "C27", "name": "K.H.S. Henula" },
-    { "register": "C31", "name": "J.K.J. Basitha" },
-    { "register": "C32", "name": "K.W.S. Yanula" },
-    { "register": "C34", "name": "H.G.T. Chanketh" },
-    { "register": "C35", "name": "Sandaru Paranavithana" },
-    { "register": "C36", "name": "A.G.G. Nimdinu" },
-    { "register": "C37", "name": "G.V. Dinal Senumitha" },
-    { "register": "C38", "name": "P.A.S.V.M. Abhilash" },
-    { "register": "C42", "name": "Saviru R. Akurugoda" },
-    { "register": "C43", "name": "Y.L. Senal Newanjana" },
-    { "register": "C44", "name": "N.W.A.L. Sathviru" },
-    { "register": "C45", "name": "Sathdisa De Silva" },
-    { "register": "D06", "name": "E.A. Dasiru Boditha" },
-    { "register": "D11", "name": "A.B. Sandika Sathsilu" },
-    { "register": "D12", "name": "D. Videw Mindula" },
-    { "register": "D14", "name": "A.P. Janindu Nimsara" },
-    { "register": "D15", "name": "U.D. Yashod Sandesh" },
-    { "register": "D38", "name": "A.G. Achintha Dewmina" },
-    { "register": "D40", "name": "N.P.T. Nihindu Channula" },
-    { "register": "D41", "name": "T.G. Vinuja Nethmin" },
-    { "register": "D42", "name": "H.M. Chanthuka Muthumala" },
-    { "register": "D44", "name": "H.A. Vinuk Senitha" },
-    { "register": "D45", "name": "B.G. Sinura Sasvidu" },
-    { "register": "D46", "name": "K.G. Nethula Mandil" },
-    { "register": "D47", "name": "J.L. Thujan Venuja" },
-    { "register": "D48", "name": "Desindu Sri Jayanula" },
-    { "register": "D51", "name": "G. Vonal Isira Sampath" },
-    { "register": "E01", "name": "Ehas Damketh Semage" },
-    { "register": "E03", "name": "M. Sanmitha Suhaswin" },
-    { "register": "E04", "name": "Venuka Damsara" },
-    { "register": "E05", "name": "H.G.A. Sasen Dewmith" },
-    { "register": "E06", "name": "Savindu Vonal" },
-    { "register": "E09", "name": "Siluna Randive" },
-    { "register": "E13", "name": "K.A. Savindu Sasmin" },
-    { "register": "E16", "name": "Osada Waidayathilaka" },
-    { "register": "E17", "name": "S.K. Saniru Diyath" },
-    { "register": "E21", "name": "Senuka Chandunu" },
-    { "register": "E24", "name": "Sithuka Methdina" },
-    { "register": "E25", "name": "Chanindu Shaluka" },
-    { "register": "E25", "name": "Kisara Kalmira" },
-    { "register": "E26", "name": "Y.N. Pathiranage" },
-    { "register": "E27", "name": "Sanuka Vithanage" },
-    { "register": "E28", "name": "Yenuka Dulin" },
-    { "register": "E30", "name": "Jonathan Suhas" },
-    { "register": "E31", "name": "Sethindu Damsas" },
-    { "register": "E32", "name": "Nimsara Gimhan" },
-    { "register": "E33", "name": "M.H.G. Yasaru" },
-    { "register": "E34", "name": "H.K. Randesh Nuwaneth" },
-    { "register": "E35", "name": "Kaviru Wagachchi" },
-    { "register": "E36", "name": "Videw Vinsara Abeysinghe" },
-    { "register": "E37", "name": "Senuwara Dinudika" },
-    { "register": "E39", "name": "Akein Kulatunga" },
-    { "register": "E41", "name": "Sanula Nethmira" },
-    { "register": "E42", "name": "Savidu Nethmika" },
-    { "register": "E42", "name": "Suvin Sasvindu" },
-    { "register": "E43", "name": "M.M.C.D. Nimsilu" },
-    { "register": "E46", "name": "Vihanga Sonal Gangabada" },
-    { "register": "E47", "name": "O.K.D.S. Dinuwara" },
-    { "register": "E48", "name": "K.G.D.B. Jayasekara" },
-    { "register": "E49", "name": "K.P.H. Pathmin" },
-    { "register": "E50", "name": "K.P. Dhasas Ranthusa" },
-    { "register": "F20", "name": "A.G. Dulesh Sahansa" },
-    { "register": "F22", "name": "K.S. Lometh" },
-    { "register": "F23", "name": "T.W.B. Manomitha" },
-    { "register": "F25", "name": "K. Kisandu Jayawickrama" },
-    { "register": "F29", "name": "E.P. Chethana De Soysa" },
-    { "register": "F34", "name": "W.M.S. Sandes" },
-    { "register": "F35", "name": "E.A.M. Pansilu De Silva" },
-    { "register": "F36", "name": "K.D. Himasha Chamudith" },
-    { "register": "F38", "name": "H.K.A. Dewmika" },
-    { "register": "F39", "name": "W. Anuga Vihas" },
-    { "register": "F40", "name": "R. Ranmina Wellala" },
-    { "register": "F41", "name": "G.H.P.A.W. Piyumal" },
-    { "register": "F42", "name": "V.L. Samarasekara" },
-    { "register": "F43", "name": "A.V.K. Tharumina" },
-    { "register": "F44", "name": "N.Y. Yonal" },
-    { "register": "F45", "name": "M.H. Rusiru Vihanga" },
-    { "register": "F47", "name": "Randul De Zoysa" }
-
+const students = {
+    "9A's Squad": [
+        { "register": "A01", "name": "D.W. Minindu Pabasara" },
+        { "register": "A04", "name": "W.G. Helajith Dinujaya" },
+        { "register": "A05", "name": "M.G. Aken Yensitha" },
+        { "register": "A06", "name": "G. Sadila Bonuka" },
+        { "register": "A16", "name": "P. Hirun Mindeepa" },
+        { "register": "A19", "name": "G.W. Theres De Silva" },
+        { "register": "A29", "name": "A. Nethsara Chithhan" },
+        { "register": "A30", "name": "T.A. Vidusun Nethsara" },
+        { "register": "A34", "name": "V.A.A.P. Bihara" },
+        { "register": "A35", "name": "M.H.I. Dewdunu" },
+        { "register": "A36", "name": "D. Maleesha Nethsara" },
+        { "register": "A37", "name": "A.M.S.S. Dahampath" },
+        { "register": "A40", "name": "D.D. Gangul Randima" },
+        { "register": "A41", "name": "L.A.K. Dilshan" },
+        { "register": "A42", "name": "E.D.S. Moshitha" },
+        { "register": "A43", "name": "H.T.T. Nethsara" },
+        { "register": "A44", "name": "H.A. Manaram Thathsara" },
+        { "register": "A45", "name": "W.A.K. Naveen Nimsara" },
+        { "register": "A46", "name": "M.D.H.V. Priyasardhana" },
+        { "register": "A47", "name": "J. Ruvidu Hansana" },
+        { "register": "A50", "name": "D.R. Methuja" },
+        { "register": "B02", "name": "K.A. Navindu Siwhas" },
+        { "register": "B03", "name": "K.M. Kalana Sandeepa" },
+        { "register": "B04", "name": "U.A. Hasod Himakara" },
+        { "register": "B06", "name": "A.J. Abhiman Jayasinghe" },
+        { "register": "B08", "name": "K.G. Sajana Kithmina" },
+        { "register": "B17", "name": "Y. Rakmitha Samaraweeraarachchi" },
+        { "register": "B20", "name": "H.G. Rithira Handisu" },
+        { "register": "B22", "name": "A.K. Ashen Shavidu" },
+        { "register": "B30", "name": "L.G. Okindu Wathmira" },
+        { "register": "B32", "name": "K.K. Nethindu Thaminda" },
+        { "register": "B34", "name": "N.A.C.H. Wijenayaka" },
+        { "register": "B36", "name": "M.D. Ranidu Pramod" },
+        { "register": "B37", "name": "D.M. Thisum Jalitha" },
+        { "register": "B38", "name": "D.G. Nadith Nethsara" },
+        { "register": "B39", "name": "W.D. Madhuka Shyamal" },
+        { "register": "B43", "name": "A.I. Withanawasam" },
+        { "register": "B44", "name": "G.K. Thasith Thanuwara" },
+        { "register": "B45", "name": "L. Yashod Lasal" },
+        { "register": "B47", "name": "M.G.S. Sithumjith" },
+        { "register": "C09", "name": "Saviru Thuduwage" },
+        { "register": "C15", "name": "Binara W. Weerasekara" },
+        { "register": "C27", "name": "K.H.S. Henula" },
+        { "register": "C31", "name": "J.K.J. Basitha" },
+        { "register": "C32", "name": "K.W.S. Yanula" },
+        { "register": "C34", "name": "H.G.T. Chanketh" },
+        { "register": "C35", "name": "Sandaru Paranavithana" },
+        { "register": "C36", "name": "A.G.G. Nimdinu" },
+        { "register": "C37", "name": "G.V. Dinal Senumitha" },
+        { "register": "C38", "name": "P.A.S.V.M. Abhilash" },
+        { "register": "C42", "name": "Saviru R. Akurugoda" },
+        { "register": "C43", "name": "Y.L. Senal Newanjana" },
+        { "register": "C44", "name": "N.W.A.L. Sathviru" },
+        { "register": "C45", "name": "Sathdisa De Silva" },
+        { "register": "D06", "name": "E.A. Dasiru Boditha" },
+        { "register": "D11", "name": "A.B. Sandika Sathsilu" },
+        { "register": "D12", "name": "D. Videw Mindula" },
+        { "register": "D14", "name": "A.P. Janindu Nimsara" },
+        { "register": "D15", "name": "U.D. Yashod Sandesh" },
+        { "register": "D38", "name": "A.G. Achintha Dewmina" },
+        { "register": "D40", "name": "N.P.T. Nihindu Channula" },
+        { "register": "D41", "name": "T.G. Vinuja Nethmin" },
+        { "register": "D42", "name": "H.M. Chanthuka Muthumala" },
+        { "register": "D44", "name": "H.A. Vinuk Senitha" },
+        { "register": "D45", "name": "B.G. Sinura Sasvidu" },
+        { "register": "D46", "name": "K.G. Nethula Mandil" },
+        { "register": "D47", "name": "J.L. Thujan Venuja" },
+        { "register": "D48", "name": "Desindu Sri Jayanula" },
+        { "register": "D51", "name": "G. Vonal Isira Sampath" },
+        { "register": "E01", "name": "Ehas Damketh Semage" },
+        { "register": "E03", "name": "M. Sanmitha Suhaswin" },
+        { "register": "E04", "name": "Venuka Damsara" },
+        { "register": "E05", "name": "H.G.A. Sasen Dewmith" },
+        { "register": "E06", "name": "Savindu Vonal" },
+        { "register": "E09", "name": "Siluna Randive" },
+        { "register": "E13", "name": "K.A. Savindu Sasmin" },
+        { "register": "E16", "name": "Osada Waidayathilaka" },
+        { "register": "E17", "name": "S.K. Saniru Diyath" },
+        { "register": "E21", "name": "Senuka Chandunu" },
+        { "register": "E24", "name": "Sithuka Methdina" },
+        { "register": "E25", "name": "Chanindu Shaluka" },
+        { "register": "E26", "name": "Kisara Kalmira" },
+        { "register": "E27", "name": "Y.N. Pathiranage" },
+        { "register": "E28", "name": "Sanuka Vithanage" },
+        { "register": "E29", "name": "Yenuka Dulin" },
+        { "register": "E30", "name": "Jonathan Suhas" },
+        { "register": "E31", "name": "Sethindu Damsas" },
+        { "register": "E32", "name": "Nimsara Gimhan" },
+        { "register": "E33", "name": "M.H.G. Yasaru" },
+        { "register": "E34", "name": "H.K. Randesh Nuwaneth" },
+        { "register": "E35", "name": "Kaviru Wagachchi" },
+        { "register": "E36", "name": "Videw Vinsara Abeysinghe" },
+        { "register": "E37", "name": "Senuwara Dinudika" },
+        { "register": "E39", "name": "Akein Kulatunga" },
+        { "register": "E41", "name": "Sanula Nethmira" },
+        { "register": "E42", "name": "Savidu Nethmika" },
+        { "register": "E43", "name": "Suvin Sasvindu" },
+        { "register": "E44", "name": "M.M.C.D. Nimsilu" },
+        { "register": "E46", "name": "Vihanga Sonal Gangabada" },
+        { "register": "E47", "name": "O.K.D.S. Dinuwara" },
+        { "register": "E48", "name": "K.G.D.B. Jayasekara" },
+        { "register": "E49", "name": "K.P.H. Pathmin" },
+        { "register": "E50", "name": "K.P. Dhasas Ranthusa" },
+        { "register": "F20", "name": "A.G. Dulesh Sahansa" },
+        { "register": "F22", "name": "K.S. Lometh" },
+        { "register": "F23", "name": "T.W.B. Manomitha" },
+        { "register": "F25", "name": "K. Kisandu Jayawickrama" },
+        { "register": "F29", "name": "E.P. Chethana De Soysa" },
+        { "register": "F34", "name": "W.M.S. Sandes" },
+        { "register": "F35", "name": "E.A.M. Pansilu De Silva" },
+        { "register": "F36", "name": "K.D. Himasha Chamudith" },
+        { "register": "F38", "name": "H.K.A. Dewmika" },
+        { "register": "F39", "name": "W. Anuga Vihas" },
+        { "register": "F40", "name": "R. Ranmina Wellala" },
+        { "register": "F41", "name": "G.H.P.A.W. Piyumal" },
+        { "register": "F42", "name": "V.L. Samarasekara" },
+        { "register": "F43", "name": "A.V.K. Tharumina" },
+        { "register": "F44", "name": "N.Y. Yonal" },
+        { "register": "F45", "name": "M.H. Rusiru Vihanga" },
+        { "register": "F47", "name": "Randul De Zoysa" }
+    ]
 };
 
-const teachers = {
-  "11A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163" },
-  "11B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947" },
-  "11C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515" },
-  "11D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733" },
-  "11E": { name: "Mr. Uditha Godagama", phone: "077 722 9242" },
-  "11F": { name: "Mrs. U.G.R. Dilrukshi", phone: "077 358 " },
+const teacher = {
+    name: "Mr. K.H. Nallaperuma",
+    phone: "077 722 9242",
+    photoUrl: "https://i.ibb.co/7pQF1fK/10E.png"
 };
 
-const teacherPhotos = {
-    "11A": "https://i.ibb.co/t3CJSq0/10A.jpg",
-    "11B": "https://i.ibb.co/L8LKZs3/10B.jpg",
-    "11C": "https://i.ibb.co/1mkrZtL/10C.jpg",
-    "11D": "https://i.ibb.co/NrFccJ8/10D.png",
-    "11E": "https://i.ibb.co/7pQF1fK/10E.png",
-    "11F": "https://i.ibb.co/B58CLv5n/UGRD.png"
-};
-
-const classTeachers = {
-  "11A": { name: "Mrs. N. Preethi Kumari", phone: "071 225 9163", photoUrl: "https://i.ibb.co/t3CJSq0/10A.jpg" },
-  "11B": { name: "Mrs. S.T. Indrani", phone: "077 603 6947", photoUrl: "https://i.ibb.co/L8LKZs3/10B.jpg" },
-  "11C": { name: "Mrs. Bimba Lamahewa", phone: "077 198 6515", photoUrl: "https://i.ibb.co/1mkrZtL/10C.jpg" },
-  "11D": { name: "Mrs. Amali Udayangi", phone: "077 558 3733", photoUrl: "https://i.ibb.co/NrFccJ8/10D.png" },
-  "11E": { name: "Mr. Uditha Godagama", phone: "077 722 9242", photoUrl: "https://i.ibb.co/7pQF1fK/10E.png" },
-  "11F": { name: "Mrs. U.G.R. Dilrukshi", phone: "077 358 5", photoUrl: "https://i.ibb.co/B58CLv5n/UGRD.png" },
-};
-
-const classSelect = document.getElementById('class-select');
 const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
 const currentDateElement = document.getElementById('current-date-time');
 const teacherNameElement = document.getElementById('teacher-name');
-const summaryReportButton = document.getElementById('summary-report');
-const classSelection = document.getElementById('classSelection');
-const generateSummaryButton = document.getElementById('generate-summary');
 const addMarksButton = document.getElementById('add-marks');
 const subjectContainer = document.getElementById('subject-container');
 const subjectSelect = document.getElementById('subject-select');
@@ -584,350 +536,946 @@ function updateDateTime() {
 setInterval(updateDateTime, 1000);
 
 function getGrade(score) {
-  if (score >= 75) return 'A';
-  if (score >= 65) return 'B';
-  if (score >= 55) return 'C';
-  if (score >= 35) return 'S';
-  return 'W';
+    if (score >= 75) return 'A';
+    if (score >= 65) return 'B';
+    if (score >= 55) return 'C';
+    if (score >= 35) return 'S';
+    return 'W';
 }
 
 function updateSummary() {
-  const selectedClass = classSelect.value;
-  const totalStudents = students[selectedClass].length;
-  let presentCount = 0;
-  students[selectedClass].forEach(student => {
-    if (localStorage.getItem(`${selectedClass}-${student.register}`)) {
-      presentCount++;
-    }
-  });
-  const absentCount = totalStudents - presentCount;
-  const summaryText = `Total Students: ${totalStudents} | Present: ${presentCount} | Absent: ${absentCount}`;
-  summaryElement.textContent = summaryText;
-  summaryBelowElement.textContent = summaryText;
-  teacherNameElement.textContent = `Class Teacher: ${teachers[selectedClass].name}`;
-  const teacherPhoto = document.getElementById("teacher-photo");
-  teacherPhoto.src = teacherPhotos[selectedClass];
-  teacherPhoto.style.display = "block";
+    const totalStudents = students["9A's Squad"].length;
+    let presentCount = 0;
+    students["9A's Squad"].forEach(student => {
+        if (localStorage.getItem(`9A's Squad-${student.register}`)) {
+            presentCount++;
+        }
+    });
+    const absentCount = totalStudents - presentCount;
+    const summaryText = `Total Students: ${totalStudents} | Present: ${presentCount} | Absent: ${absentCount}`;
+    summaryElement.textContent = summaryText;
+    summaryBelowElement.textContent = summaryText;
+    teacherNameElement.textContent = `Class Teacher: ${teacher.name}`;
+    const teacherPhoto = document.getElementById("teacher-photo");
+    teacherPhoto.src = teacher.photoUrl;
+    teacherPhoto.style.display = "block";
 }
 
 function loadStudents() {
-  const selectedClass = classSelect.value;
-  attendanceTable.innerHTML = '';
-  students[selectedClass].forEach(student => {
-    const row = attendanceTable.insertRow();
-    const markCell = row.insertCell(0);
-    const registerCell = row.insertCell(1);
-    const nameCell = row.insertCell(2);
-    const timeCell = row.insertCell(3);
-    const marksCell = row.insertCell(4);
-    const checkbox = document.createElement('div');
-    checkbox.className = 'custom-checkbox';
-    const isChecked = localStorage.getItem(`${selectedClass}-${student.register}`);
-    if (isChecked) {
-      checkbox.classList.add('checked');
-      timeCell.textContent = isChecked;
-    }
-    checkbox.addEventListener('click', function () {
-      checkbox.classList.toggle('checked');
-      const isChecked = checkbox.classList.contains('checked');
-      if (isChecked) {
-        const time = new Date().toLocaleTimeString();
-        timeCell.textContent = time;
-        localStorage.setItem(`${selectedClass}-${student.register}`, time);
-      } else {
-        timeCell.textContent = '';
-        localStorage.removeItem(`${selectedClass}-${student.register}`);
-      }
-      updateSummary();
-    });
-    markCell.appendChild(checkbox);
-    registerCell.textContent = student.register;
-    nameCell.textContent = student.name;
-    const marksInput = document.createElement('input');
-    marksInput.type = 'number';
-    marksInput.style.display = 'none';
-    marksInput.dataset.register = student.register;
-    marksInput.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        const nextInput = marksInput.parentElement.parentElement.nextElementSibling?.querySelector('input[type="number"]');
-        if (nextInput) {
-          nextInput.focus();
+    attendanceTable.innerHTML = '';
+    students["9A's Squad"].forEach(student => {
+        const row = attendanceTable.insertRow();
+        const markCell = row.insertCell(0);
+        const registerCell = row.insertCell(1);
+        const nameCell = row.insertCell(2);
+        const timeCell = row.insertCell(3);
+        const marksCell = row.insertCell(4);
+        const checkbox = document.createElement('div');
+        checkbox.className = 'custom-checkbox';
+        const isChecked = localStorage.getItem(`9A's Squad-${student.register}`);
+        if (isChecked) {
+            checkbox.classList.add('checked');
+            timeCell.textContent = isChecked;
         }
-      }
+        checkbox.addEventListener('click', function () {
+            checkbox.classList.toggle('checked');
+            const isChecked = checkbox.classList.contains('checked');
+            if (isChecked) {
+                const time = new Date().toLocaleTimeString();
+                timeCell.textContent = time;
+                localStorage.setItem(`9A's Squad-${student.register}`, time);
+            } else {
+                timeCell.textContent = '';
+                localStorage.removeItem(`9A's Squad-${student.register}`);
+            }
+            updateSummary();
+        });
+        markCell.appendChild(checkbox);
+        registerCell.textContent = student.register;
+        nameCell.textContent = student.name;
+        const marksInput = document.createElement('input');
+        marksInput.type = 'number';
+        marksInput.style.display = 'none';
+        marksInput.dataset.register = student.register;
+        marksInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const nextInput = marksInput.parentElement.parentElement.nextElementSibling?.querySelector('input[type="number"]');
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            }
+        });
+        marksCell.appendChild(marksInput);
     });
-    marksCell.appendChild(marksInput);
-  });
-  updateSummary();
+    updateSummary();
 }
 
 document.getElementById('clear-data').addEventListener('click', () => {
-  const selectedClass = classSelect.value;
-  students[selectedClass].forEach(student => {
-    localStorage.removeItem(`${selectedClass}-${student.register}`);
-  });
-  loadStudents();
+    students["9A's Squad"].forEach(student => {
+        localStorage.removeItem(`9A's Squad-${student.register}`);
+    });
+    loadStudents();
 });
 
 document.getElementById('get-report').addEventListener('click', () => {
-  const selectedClass = classSelect.value;
-  const doc = new jsPDF();
-  doc.setFontSize(12);
-  doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
-
-  const teacher = classTeachers[selectedClass];
-  const teacherImageUrl = teacher.photoUrl;
-
-  const img = new Image();
-  img.src = teacherImageUrl;
-  img.onload = () => {
-    doc.addImage(img, 'JPEG', 160, 4, 28, 31);
-
-    doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
-    doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
-
-    let tableData = [];
-    const totalStudents = students[selectedClass].length;
-    let presentCount = 0;
-
-    students[selectedClass].forEach(student => {
-      const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-      const status = isPresent ? `Present` : 'Absent';
-      tableData.push({
-        register: student.register,
-        name: student.name,
-        status: status,
-        rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
-      });
-      if (isPresent) {
-        presentCount++;
-      }
-    });
-
-    const absentCount = totalStudents - presentCount;
-    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
-
-    const columns = [
-      { header: 'Register Number', dataKey: 'register' },
-      { header: 'Name', dataKey: 'name' },
-      { header: 'Attendance Status', dataKey: 'status' }
-    ];
-
-    doc.autoTable({
-      columns: columns,
-      body: tableData,
-      startY: 44,
-      theme: 'grid',
-      margin: { top: 30 },
-      styles: { fontSize: 10 },
-      headStyles: {
-        fillColor: [0, 0, 0],
-        textColor: [0, 0, 0],
-        fontStyle: 'bold'
-      },
-      didParseCell: (data) => {
-        if (data.section === 'head') {
-          data.cell.styles.fillColor = [255, 230, 66];
-        } else if (data.section === 'body') {
-          const rowData = tableData[data.row.index];
-          if (rowData && rowData.rowColor) {
-            data.cell.styles.fillColor = rowData.rowColor;
-          }
-        }
-      },
-      didDrawPage: (data) => {
-        doc.setFontSize(10);
-        doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-      }
-    });
-
-    doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
-  };
-});
-
-document.getElementById('absent-report').addEventListener('click', () => {
-  const selectedClass = classSelect.value;
-  const doc = new jsPDF();
-  doc.setFontSize(12);
-  doc.text(`Absent Report - Class ${selectedClass}`, 10, 10);
-  const teacher = teachers[selectedClass];
-  doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-  doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
-  let tableData = [];
-  const totalStudents = students[selectedClass].length;
-  let presentCount = 0;
-  students[selectedClass].forEach(student => {
-    const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-    if (!isPresent) {
-      tableData.push([student.register, student.name]);
-    } else {
-      presentCount++;
-    }
-  });
-  const absentCount = totalStudents - presentCount;
-  doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
-  const columns = [
-    { header: 'Register Number', dataKey: 0 },
-    { header: 'Name', dataKey: 1 }
-  ];
-  doc.autoTable({
-    columns: columns,
-    body: tableData,
-    startY: 35,
-    theme: 'grid',
-    margin: { top: 30 },
-    didDrawPage: (data) => {
-      doc.setFontSize(10);
-      doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-    }
-  });
-  doc.save(`Absent_Report_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
-});
-
-addMarksButton.addEventListener('click', () => {
-  if (!addingMarks) {
-    addingMarks = true;
-    addMarksButton.textContent = 'Get Marks';
-    marksColumn.style.display = 'table-cell';
-    subjectContainer.style.display = 'block';
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-      input.style.display = 'block';
-    });
-  } else {
-    addingMarks = false;
-    const selectedClass = classSelect.value;
     const doc = new jsPDF();
     doc.setFontSize(12);
-    const selectedSubject = subjectSelect.value;
-    doc.text(`Marks Report for ${selectedSubject} - Class ${selectedClass}`, 10, 10);
-    const teacher = teachers[selectedClass];
-    doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-    doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
-    let tableData = [];
-    let totalStudents = students[selectedClass].length;
-    let presentCount = 0;
-    students[selectedClass].forEach(student => {
-      const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-      const status = isPresent ? isPresent : 'Absent';
-      const marksInput = document.querySelector(`input[data-register="${student.register}"]`);
-      const marks = marksInput.value || 'N/A';
-      const grade = getGrade(parseInt(marks, 10));
-      tableData.push([student.register, student.name, status, marks, grade]);
-      if (isPresent) {
-        presentCount++;
-      }
-    });
-    const absentCount = totalStudents - presentCount;
-    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
-    doc.autoTable({
-      head: [['Register Number', 'Name', 'Attendance Status', 'Marks', 'Grade']],
-      body: tableData,
-      startY: 35,
-      theme: 'grid',
-      margin: { top: 30 },
-      didDrawPage: (data) => {
-        doc.setFontSize(10);
-        doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-      }
-    });
-    doc.save(`Marks_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
-    addMarksButton.textContent = 'Add Marks';
-    marksColumn.style.display = 'none';
-    subjectContainer.style.display = 'none';
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-      input.style.display = 'none';
-    });
-  }
-});
+    doc.text(`Attendance Report - Class 9A's Squad`, 15, 15);
 
-classSelect.addEventListener('change', () => {
-  loadStudents();
-});
+    const img = new Image();
+    img.src = teacher.photoUrl;
+    img.onload = () => {
+        doc.addImage(img, 'JPEG', 160, 4, 28, 31);
 
-loadStudents();
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+        doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
 
-summaryReportButton.addEventListener('click', () => {
-    classSelection.style.display = 'block';
-});
-
-generateSummaryButton.addEventListener('click', () => {
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text('Grade 11 Summary Report', 10, 10);
-    doc.setFontSize(12);
-    doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-    doc.text('Section Head - Mr. Amaila Nanayakkara', 10, 30);
-
-    const classTeachers = {
-        "11A": { name: "Mrs. N. Preethi Kumari" },
-        "11B": { name: "Mrs. S.T. Indrani" },
-        "11C": { name: "Mrs. Bimba Lamahewa" },
-        "11D": { name: "Mrs. Amali Udayangi" },
-        "11E": { name: "Mr. Uditha Godagama" },
-        "11F": { name: "Mrs. U.G.R. Dilrukshi" }
-    };
-
-    let summaryData = [];
-    let overallTotal = 0;
-    let overallPresent = 0;
-    let overallAbsent = 0;
-
-    document.querySelectorAll('#classSelection input[type="checkbox"]:checked').forEach(checkbox => {
-        const className = checkbox.value;
-        const classTeacher = classTeachers[className]?.name || "Unknown";
-        const classStudents = students[className] || [];
-        const totalStudents = classStudents.length;
+        let tableData = [];
+        const totalStudents = students["9A's Squad"].length;
         let presentCount = 0;
 
-        classStudents.forEach(student => {
-            if (localStorage.getItem(`${className}-${student.register}`)) {
+        students["9A's Squad"].forEach(student => {
+            const isPresent = localStorage.getItem(`9A's Squad-${student.register}`);
+            const status = isPresent ? `Present` : 'Absent';
+            tableData.push({
+                register: student.register,
+                name: student.name,
+                status: status,
+                rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
+            });
+            if (isPresent) {
                 presentCount++;
             }
         });
 
         const absentCount = totalStudents - presentCount;
-        summaryData.push([className, classTeacher, totalStudents, presentCount, absentCount]);
+        doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
 
-        overallTotal += totalStudents;
-        overallPresent += presentCount;
-        overallAbsent += absentCount;
-    });
+        const columns = [
+            { header: 'Register Number', dataKey: 'register' },
+            { header: 'Name', dataKey: 'name' },
+            { header: 'Attendance Status', dataKey: 'status' }
+        ];
 
-    doc.autoTable({
-        head: [['Class', 'Class Teacher', 'Total Students', 'Present', 'Absent']],
-        body: summaryData,
-        startY: 40,
-        styles: { fillColor: [221, 235, 247], textColor: [0, 0, 0] },
-        headStyles: { fillColor: [36, 180, 171], textColor: [255, 255, 255] },
-    });
+        doc.autoTable({
+            columns: columns,
+            body: tableData,
+            startY: 44,
+            theme: 'grid',
+            margin: { top: 30 },
+            styles: { fontSize: 8 },
+            headStyles: {
+                fillColor: [0, 0, 0],
+                textColor: [0, 0, 0],
+                fontStyle: 'bold'
+            },
+            didParseCell: (data) => {
+                if (data.section === 'head') {
+                    data.cell.styles.fillColor = [255, 230, 66];
+                } else if (data.section === 'body') {
+                    const rowData = tableData[data.row.index];
+                    if (rowData && rowData.rowColor) {
+                        data.cell.styles.fillColor = rowData.rowColor;
+                    }
+                }
+            },
+            didDrawPage: (data) => {
+                doc.setFontSize(10);
+                doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+            }
+        });
 
-    doc.autoTable({
-        startY: doc.lastAutoTable.finalY + 10,
-        body: [
-            [{ content: 'Overall Summary', styles: { fontStyle: 'bold', textDecoration: 'underline' } }],
-            [`Total Students: ${overallTotal}`],
-            [`Total Present: ${overallPresent}`],
-            [`Total Absent: ${overallAbsent}`]
-        ],
-        theme: 'plain',
-        styles: {
-            fillColor: [253, 226, 191],
-            textColor: [0, 0, 0],
-            fontSize: 12,
-            fontStyle: 'bold',
-            halign: 'center'
-        },
-        tableLineColor: [0, 0, 0],
-        tableLineWidth: 0.5
-    });
-
-    doc.save(`Grade_11_Summary_Report_${new Date().toLocaleDateString()}.pdf`);
-
-    classSelection.style.display = 'none';
+        doc.save(`Attendance_9As_Squad_${new Date().toLocaleDateString()}.pdf`);
+    };
 });
 
-classSelect.addEventListener('change', loadStudents);
-loadStudents();
+document.getElementById('absent-report').addEventListener('click', () => {
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.text(`Absent Report - Class 9A's Squad`, 10, 10);
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
+    doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
+    let tableData = [];
+    const totalStudents = students["9A's Squad"].length;
+    let presentCount = 0;
+    students["9A's Squad"].forEach(student => {
+        const isPresent = localStorage.getItem(`9A's Squad-${student.register}`);
+        if (!isPresent) {
+            tableData.push([student.register, student.name]);
+        } else {
+            presentCount++;
+        }
+    });
+    const absentCount = totalStudents - presentCount;
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
+    const columns = [
+        { header: 'Register Number', dataKey: 0 },
+        { header: 'Name', dataKey: 1 }
+    ];
+    doc.autoTable({
+        columns: columns,
+        body: tableData,
+        startY: 35,
+        theme: 'grid',
+        margin: { top: 30 },
+        styles: { fontSize: 8 },
+        didDrawPage: (data) => {
+            doc.setFontSize(10);
+            doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+        }
+    });
+    doc.save(`Absent_Report_9As_Squad_${new Date().toLocaleDateString()}.pdf`);
+});
 
-</script>
-</body>
-</html>
+addMarksButton.addEventListener('click', () => {
+    if (!addingMarks) {
+        addingMarks = true;
+        addMarksButton.textContent = 'Get Marks';
+        marksColumn.style.display = 'table-cell';
+        subjectContainer.style.display = 'block';
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.style.display = 'block';
+        });
+    } else {
+        addingMarks = false;
+        const doc =<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCG E-Register</title>
+    <header>
+        <div class="nav-links">
+            <a href="intro.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </header>
+    <div id="footer">
+        Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
+    </div>
+    <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="school-logo">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #e0f7fa;
+            transition: background-color 0.5s;
+        }
+
+        header {
+            background-color: #ffc300;
+            padding: 0.5px 0.5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000211;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1610d7;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 1px;
+            z-index: 100;
+        }
+
+        #footer a {
+            color: #001aff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #footer a:hover {
+            text-decoration: underline;
+        }
+
+        #app-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        #school-logo {
+            width: 100px;
+            height: auto;
+            position: absolute;
+            top: 70px;
+            left: 126px;
+            z-index: 10;
+        }
+
+        #teacher-photo {
+            width: 100px;
+            height: auto;
+            position: absolute;
+            top: 65px;
+            right: 50px;
+            z-index: 10;
+        }
+
+        #app-container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #ffcc00;
+            text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+            background-color: #ffffff;
+            border-radius: 8px;
+            font-size: 2.5rem;
+            animation: pulse 3s infinite alternate;
+            margin-bottom: 2px;
+            letter-spacing: 1.4px;
+        }
+
+        h1:hover {
+            color: #ffd700;
+        }
+
+        h2 {
+            color: #ffcc00;
+            text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+            font-size: 1.5rem;
+            margin-top: 0;
+            padding: 5px;
+        }
+
+        #current-date-time {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0b65da;
+        }
+
+        select,
+        table {
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #b2ebf2;
+            transition: border-color 0.3s;
+        }
+
+        select:focus,
+        table:focus {
+            border-color: #00bcd4;
+        }
+
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #get-report {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #clear-data {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #add-marks {
+            background-color: #ffeb3b;
+            color: black;
+        }
+
+        #absent-report {
+            background-color: #607d8b;
+            color: white;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: white;
+            margin-right: 10px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .custom-checkbox.checked {
+            background-color: #c8e6c9;
+            border-color: #4CAF50;
+        }
+
+        .custom-checkbox:after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            top: 5px;
+            left: 5px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .custom-checkbox.checked:after {
+            opacity: 1;
+        }
+
+        #summary {
+            margin: 10px 0;
+            font-weight: bold;
+            color: #00796b;
+        }
+
+        .teacher-name {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e96d15e7;
+        }
+
+        #teacher-photo {
+            width: 100px;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            #school-logo {
+                width: 80px;
+                left: 10px;
+                top: 40px;
+            }
+
+            #teacher-photo {
+                width: 80px;
+                top: 8.2px;
+                right: 6.8px;
+            }
+
+            .teacher-name {
+                position: absolute;
+                top: 136px;
+                font-size: 14px;
+                font-weight: bold;
+                color: #e96d15e7;
+                left: 20px;
+            }
+
+            #current-date-time {
+                font-size: 12px;
+                font-weight: bold;
+                color: #0b65da;
+                top: 258px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+
+            .button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .table-container {
+                max-height: 300px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="app-container">
+    <h1>MCG E-Register</h1>
+    <h2>9A's Squad - 2025</h2>
+    <div class="teacher-name" id="teacher-name">Class Teacher: Mr. K.H. Nallaperuma</div>
+    <img id="teacher-photo" src="https://i.ibb.co/7pQF1fK/10E.png" alt="Teacher's Photo" style="display: block;" />
+    <div id="current-date-time"></div>
+    <div id="subject-container">
+        <label for="subject-select">Select Subject:</label>
+        <select id="subject-select">
+            <option value="Sinhala">Sinhala</option>
+            <option value="English">English</option>
+            <option value="Maths">Maths</option>
+            <option value="Science">Science</option>
+            <option value="Buddhism">Buddhism</option>
+            <option value="History">History</option>
+        </select>
+    </div>
+    <div id="summary"></div>
+    <div class="table-container">
+        <table id="attendance-table">
+            <thead>
+                <tr>
+                    <th>Mark</th>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Time</th>
+                    <th id="marks-column" style="display: none;">Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Student rows will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <div id="summary-below"></div>
+    <button id="clear-data" class="button">Clear Data</button>
+    <button id="get-report" class="button">Get Report</button>
+    <button id="absent-report" class="button">Absent Report</button>
+    <button id="add-marks" class="button">Add Marks</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+<script>
+const { jsPDF } = window.jspdf;
+const students = {
+    "9A's Squad": [
+        { "register": "A01", "name": "D.W. Minindu Pabasara" },
+        { "register": "A04", "name": "W.G. Helajith Dinujaya" },
+        { "register": "A05", "name": "M.G. Aken Yensitha" },
+        { "register": "A06", "name": "G. Sadila Bonuka" },
+        { "register": "A16", "name": "P. Hirun Mindeepa" },
+        { "register": "A19", "name": "G.W. Theres De Silva" },
+        { "register": "A29", "name": "A. Nethsara Chithhan" },
+        { "register": "A30", "name": "T.A. Vidusun Nethsara" },
+        { "register": "A34", "name": "V.A.A.P. Bihara" },
+        { "register": "A35", "name": "M.H.I. Dewdunu" },
+        { "register": "A36", "name": "D. Maleesha Nethsara" },
+        { "register": "A37", "name": "A.M.S.S. Dahampath" },
+        { "register": "A40", "name": "D.D. Gangul Randima" },
+        { "register": "A41", "name": "L.A.K. Dilshan" },
+        { "register": "A42", "name": "E.D.S. Moshitha" },
+        { "register": "A43", "name": "H.T.T. Nethsara" },
+        { "register": "A44", "name": "H.A. Manaram Thathsara" },
+        { "register": "A45", "name": "W.A.K. Naveen Nimsara" },
+        { "register": "A46", "name": "M.D.H.V. Priyasardhana" },
+        { "register": "A47", "name": "J. Ruvidu Hansana" },
+        { "register": "A50", "name": "D.R. Methuja" },
+        { "register": "B02", "name": "K.A. Navindu Siwhas" },
+        { "register": "B03", "name": "K.M. Kalana Sandeepa" },
+        { "register": "B04", "name": "U.A. Hasod Himakara" },
+        { "register": "B06", "name": "A.J. Abhiman Jayasinghe" },
+        { "register": "B08", "name": "K.G. Sajana Kithmina" },
+        { "register": "B17", "name": "Y. Rakmitha Samaraweeraarachchi" },
+        { "register": "B20", "name": "H.G. Rithira Handisu" },
+        { "register": "B22", "name": "A.K. Ashen Shavidu" },
+        { "register": "B30", "name": "L.G. Okindu Wathmira" },
+        { "register": "B32", "name": "K.K. Nethindu Thaminda" },
+        { "register": "B34", "name": "N.A.C.H. Wijenayaka" },
+        { "register": "B36", "name": "M.D. Ranidu Pramod" },
+        { "register": "B37", "name": "D.M. Thisum Jalitha" },
+        { "register": "B38", "name": "D.G. Nadith Nethsara" },
+        { "register": "B39", "name": "W.D. Madhuka Shyamal" },
+        { "register": "B43", "name": "A.I. Withanawasam" },
+        { "register": "B44", "name": "G.K. Thasith Thanuwara" },
+        { "register": "B45", "name": "L. Yashod Lasal" },
+        { "register": "B47", "name": "M.G.S. Sithumjith" },
+        { "register": "C09", "name": "Saviru Thuduwage" },
+        { "register": "C15", "name": "Binara W. Weerasekara" },
+        { "register": "C27", "name": "K.H.S. Henula" },
+        { "register": "C31", "name": "J.K.J. Basitha" },
+        { "register": "C32", "name": "K.W.S. Yanula" },
+        { "register": "C34", "name": "H.G.T. Chanketh" },
+        { "register": "C35", "name": "Sandaru Paranavithana" },
+        { "register": "C36", "name": "A.G.G. Nimdinu" },
+        { "register": "C37", "name": "G.V. Dinal Senumitha" },
+        { "register": "C38", "name": "P.A.S.V.M. Abhilash" },
+        { "register": "C42", "name": "Saviru R. Akurugoda" },
+        { "register": "C43", "name": "Y.L. Senal Newanjana" },
+        { "register": "C44", "name": "N.W.A.L. Sathviru" },
+        { "register": "C45", "name": "Sathdisa De Silva" },
+        { "register": "D06", "name": "E.A. Dasiru Boditha" },
+        { "register": "D11", "name": "A.B. Sandika Sathsilu" },
+        { "register": "D12", "name": "D. Videw Mindula" },
+        { "register": "D14", "name": "A.P. Janindu Nimsara" },
+        { "register": "D15", "name": "U.D. Yashod Sandesh" },
+        { "register": "D38", "name": "A.G. Achintha Dewmina" },
+        { "register": "D40", "name": "N.P.T. Nihindu Channula" },
+        { "register": "D41", "name": "T.G. Vinuja Nethmin" },
+        { "register": "D42", "name": "H.M. Chanthuka Muthumala" },
+        { "register": "D44", "name": "H.A. Vinuk Senitha" },
+        { "register": "D45", "name": "B.G. Sinura Sasvidu" },
+        { "register": "D46", "name": "K.G. Nethula Mandil" },
+        { "register": "D47", "name": "J.L. Thujan Venuja" },
+        { "register": "D48", "name": "Desindu Sri Jayanula" },
+        { "register": "D51", "name": "G. Vonal Isira Sampath" },
+        { "register": "E01", "name": "Ehas Damketh Semage" },
+        { "register": "E03", "name": "M. Sanmitha Suhaswin" },
+        { "register": "E04", "name": "Venuka Damsara" },
+        { "register": "E05", "name": "H.G.A. Sasen Dewmith" },
+        { "register": "E06", "name": "Savindu Vonal" },
+        { "register": "E09", "name": "Siluna Randive" },
+        { "register": "E13", "name": "K.A. Savindu Sasmin" },
+        { "register": "E16", "name": "Osada Waidayathilaka" },
+        { "register": "E17", "name": "S.K. Saniru Diyath" },
+        { "register": "E21", "name": "Senuka Chandunu" },
+        { "register": "E24", "name": "Sithuka Methdina" },
+        { "register": "E25", "name": "Chanindu Shaluka" },
+        { "register": "E26", "name": "Kisara Kalmira" },
+        { "register": "E27", "name": "Y.N. Pathiranage" },
+        { "register": "E28", "name": "Sanuka Vithanage" },
+        { "register": "E29", "name": "Yenuka Dulin" },
+        { "register": "E30", "name": "Jonathan Suhas" },
+        { "register": "E31", "name": "Sethindu Damsas" },
+        { "register": "E32", "name": "Nimsara Gimhan" },
+        { "register": "E33", "name": "M.H.G. Yasaru" },
+        { "register": "E34", "name": "H.K. Randesh Nuwaneth" },
+        { "register": "E35", "name": "Kaviru Wagachchi" },
+        { "register": "E36", "name": "Videw Vinsara Abeysinghe" },
+        { "register": "E37", "name": "Senuwara Dinudika" },
+        { "register": "E39", "name": "Akein Kulatunga" },
+        { "register": "E41", "name": "Sanula Nethmira" },
+        { "register": "E42", "name": "Savidu Nethmika" },
+        { "register": "E43", "name": "Suvin Sasvindu" },
+        { "register": "E44", "name": "M.M.C.D. Nimsilu" },
+        { "register": "E46", "name": "Vihanga Sonal Gangabada" },
+        { "register": "E47", "name": "O.K.D.S. Dinuwara" },
+        { "register": "E48", "name": "K.G.D.B. Jayasekara" },
+        { "register": "E49", "name": "K.P.H. Pathmin" },
+        { "register": "E50", "name": "K.P. Dhasas Ranthusa" },
+        { "register": "F20", "name": "A.G. Dulesh Sahansa" },
+        { "register": "F22", "name": "K.S. Lometh" },
+        { "register": "F23", "name": "T.W.B. Manomitha" },
+        { "register": "F25", "name": "K. Kisandu Jayawickrama" },
+        { "register": "F29", "name": "E.P. Chethana De Soysa" },
+        { "register": "F34", "name": "W.M.S. Sandes" },
+        { "register": "F35", "name": "E.A.M. Pansilu De Silva" },
+        { "register": "F36", "name": "K.D. Himasha Chamudith" },
+        { "register": "F38", "name": "H.K.A. Dewmika" },
+        { "register": "F39", "name": "W. Anuga Vihas" },
+        { "register": "F40", "name": "R. Ranmina Wellala" },
+        { "register": "F41", "name": "G.H.P.A.W. Piyumal" },
+        { "register": "F42", "name": "V.L. Samarasekara" },
+        { "register": "F43", "name": "A.V.K. Tharumina" },
+        { "register": "F44", "name": "N.Y. Yonal" },
+        { "register": "F45", "name": "M.H. Rusiru Vihanga" },
+        { "register": "F47", "name": "Randul De Zoysa" }
+    ]
+};
+
+const teacher = {
+    name: "Mr. K.H. Nallaperuma",
+    phone: "077 722 9242",
+    photoUrl: "https://i.ibb.co/7pQF1fK/10E.png"
+};
+
+const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
+const currentDateElement = document.getElementById('current-date-time');
+const teacherNameElement = document.getElementById('teacher-name');
+const addMarksButton = document.getElementById('add-marks');
+const subjectContainer = document.getElementById('subject-container');
+const subjectSelect = document.getElementById('subject-select');
+const marksColumn = document.getElementById('marks-column');
+const summaryElement = document.getElementById('summary');
+const summaryBelowElement = document.getElementById('summary-below');
+let addingMarks = false;
+
+function updateDateTime() {
+    const now = new Date();
+    const formattedDate = now.toISOString().split('T')[0];
+    const formattedTime = now.toLocaleTimeString();
+    currentDateElement.innerText = `Date: ${formattedDate} Time: ${formattedTime}`;
+}
+setInterval(updateDateTime, 1000);
+
+function getGrade(score) {
+    if (score >= 75) return 'A';
+    if (score >= 65) return 'B';
+    if (score >= 55) return 'C';
+    if (score >= 35) return 'S';
+    return 'W';
+}
+
+function updateSummary() {
+    const totalStudents = students["9A's Squad"].length;
+    let presentCount = 0;
+    students["9A's Squad"].forEach(student => {
+        if (localStorage.getItem(`9A's Squad-${student.register}`)) {
+            presentCount++;
+        }
+    });
+    const absentCount = totalStudents - presentCount;
+    const summaryText = `Total Students: ${totalStudents} | Present: ${presentCount} | Absent: ${absentCount}`;
+    summaryElement.textContent = summaryText;
+    summaryBelowElement.textContent = summaryText;
+    teacherNameElement.textContent = `Class Teacher: ${teacher.name}`;
+    const teacherPhoto = document.getElementById("teacher-photo");
+    teacherPhoto.src = teacher.photoUrl;
+    teacherPhoto.style.display = "block";
+}
+
+function loadStudents() {
+    attendanceTable.innerHTML = '';
+    students["9A's Squad"].forEach(student => {
+        const row = attendanceTable.insertRow();
+        const markCell = row.insertCell(0);
+        const registerCell = row.insertCell(1);
+        const nameCell = row.insertCell(2);
+        const timeCell = row.insertCell(3);
+        const marksCell = row.insertCell(4);
+        const checkbox = document.createElement('div');
+        checkbox.className = 'custom-checkbox';
+        const isChecked = localStorage.getItem(`9A's Squad-${student.register}`);
+        if (isChecked) {
+            checkbox.classList.add('checked');
+            timeCell.textContent = isChecked;
+        }
+        checkbox.addEventListener('click', function () {
+            checkbox.classList.toggle('checked');
+            const isChecked = checkbox.classList.contains('checked');
+            if (isChecked) {
+                const time = new Date().toLocaleTimeString();
+                timeCell.textContent = time;
+                localStorage.setItem(`9A's Squad-${student.register}`, time);
+            } else {
+                timeCell.textContent = '';
+                localStorage.removeItem(`9A's Squad-${student.register}`);
+            }
+            updateSummary();
+        });
+        markCell.appendChild(checkbox);
+        registerCell.textContent = student.register;
+        nameCell.textContent = student.name;
+        const marksInput = document.createElement('input');
+        marksInput.type = 'number';
+        marksInput.style.display = 'none';
+        marksInput.dataset.register = student.register;
+        marksInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const nextInput = marksInput.parentElement.parentElement.nextElementSibling?.querySelector('input[type="number"]');
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            }
+        });
+        marksCell.appendChild(marksInput);
+    });
+    updateSummary();
+}
+
+document.getElementById('clear-data').addEventListener('click', () => {
+    students["9A's Squad"].forEach(student => {
+        localStorage.removeItem(`9A's Squad-${student.register}`);
+    });
+    loadStudents();
+});
+
+document.getElementById('get-report').addEventListener('click', () => {
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.text(`Attendance Report - Class 9A's Squad`, 15, 15);
+
+    const img = new Image();
+    img.src = teacher.photoUrl;
+    img.onload = () => {
+        doc.addImage(img, 'JPEG', 160, 4, 28, 31);
+
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+        doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
+
+        let tableData = [];
+        const totalStudents = students["9A's Squad"].length;
+        let presentCount = 0;
+
+        students["9A's Squad"].forEach(student => {
+            const isPresent = localStorage.getItem(`9A's Squad-${student.register}`);
+            const status = isPresent ? `Present` : 'Absent';
+            tableData.push({
+                register: student.register,
+                name: student.name,
+                status: status,
+                rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
+            });
+            if (isPresent) {
+                presentCount++;
+            }
+        });
+
+        const absentCount = totalStudents - presentCount;
+        doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
+
+        const columns = [
+            { header: 'Register Number', dataKey: 'register' },
+            { header: 'Name', dataKey: 'name' },
+            { header: 'Attendance Status', dataKey: 'status' }
+        ];
+
+        doc.autoTable({
+            columns: columns,
+            body: tableData,
+            startY: 44,
+            theme: 'grid',
+            margin: { top: 30 },
+            styles: { fontSize: 8 },
+            headStyles: {
+                fillColor: [0, 0, 0],
+                textColor: [0, 0, 0],
+                fontStyle: 'bold'
+            },
+            didParseCell: (data) => {
+                if (data.section === 'head') {
+                    data.cell.styles.fillColor = [255, 230, 66];
+                } else if (data.section === 'body') {
+                    const rowData = tableData[data.row.index];
+                    if (rowData && rowData.rowColor) {
+                        data.cell.styles.fillColor = rowData.rowColor;
+                    }
+                }
+            },
+            didDrawPage: (data) => {
+                doc.setFontSize(10);
+                doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+            }
+        });
+
+        doc.save(`Attendance_9As_Squad_${new Date().toLocaleDateString()}.pdf`);
+    };
+});
+
+document.getElementById('absent-report').addEventListener('click', () => {
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.text(`Absent Report - Class 9A's Squad`, 10, 10);
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
+    doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
+    let tableData = [];
+    const totalStudents = students["9A's Squad"].length;
+    let presentCount = 0;
+    students["9A's Squad"].forEach(student => {
+        const isPresent = localStorage.getItem(`9A's Squad-${student.register}`);
+        if (!isPresent) {
+            tableData.push([student.register, student.name]);
+        } else {
+            presentCount++;
+        }
+    });
+    const absentCount = totalStudents - presentCount;
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
+    const columns = [
+        { header: 'Register Number', dataKey: 0 },
+        { header: 'Name', dataKey: 1 }
+    ];
+    doc.autoTable({
+        columns: columns,
+        body: tableData,
+        startY: 35,
+        theme: 'grid',
+        margin: { top: 30 },
+        styles: { fontSize: 8 },
+        didDrawPage: (data) => {
+            doc.setFontSize(10);
+            doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+        }
+    });
+    doc.save(`Absent_Report_9As_Squad_${new Date().toLocaleDateString()}.pdf`);
+});
+
+addMarksButton.addEventListener('click', () => {
+    if (!addingMarks) {
+        addingMarks = true;
+        addMarksButton.textContent = 'Get Marks';
+        marksColumn.style.display = 'table-cell';
+        subjectContainer.style.display = 'block';
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.style.display = 'block';
+        });
+    } else {
+        addingMarks = false;
+        const doc =
