@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <header>
+    <div class="nav-links">
+        <a href="intro.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCG E-Register</title>
+    <div id="footer">
+      Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
+    </div>
+    <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="school-logo">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,63 +25,66 @@
             transition: background-color 0.5s;
         }
 
-        #name {
-            bottom: 0px;
+        #name{
+          bottom: 0px;
         }
 
         header {
-            background-color: #ffc300;
-            padding: 0.5px 0.5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+    background-color: #ffc300;
+    padding: 0.5px 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+.nav-links {
+    display: flex;
+    justify-content: center; /* This centers the navigation links */
+    gap: 20px;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #000211;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: #000211;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
 
-        .nav-links a:hover {
-            color: #1610d7;
-        }
+.nav-links a:hover {
+    color: #1610d7;
+}
 
-        #footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ffffff;
-            color: #000000;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 14px;
-            font-family: 'Roboto', sans-serif;
-            letter-spacing: 1px;
-            z-index: 100;
-        }
+        /* Footer Styles */
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    z-index: 100;
+}
 
-        #footer a {
-            color: #001aff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+#footer a {
+    color: #001aff;
+    text-decoration: none;
+    font-weight: bold;
+    outline: #000000;
+}
 
-        #footer a:hover {
-            text-decoration: underline;
-        }
+#footer a:hover {
+    text-decoration: underline;
+}
+
 
         #app-container {
             max-width: 800px;
@@ -91,15 +105,14 @@
             left: 126px;
             z-index: 10;
         }
-
+        
         #teacher-photo {
             width: 100px;
             height: auto;
-            margin-top: 10px;
-            border-radius: 5px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            position: absolute;
+            top: 65px;
+            right: 50px;
+            z-index: 10;
         }
 
         #app-container:hover {
@@ -135,7 +148,8 @@
             color: #0b65da;
         }
 
-        select, table {
+        select,
+        table {
             margin: 10px 0;
             width: 100%;
             font-size: 16px;
@@ -144,7 +158,8 @@
             transition: border-color 0.3s;
         }
 
-        select:focus, table:focus {
+        select:focus,
+        table:focus {
             border-color: #00bcd4;
         }
 
@@ -153,7 +168,8 @@
             width: 100%;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
@@ -169,11 +185,31 @@
             transition: background-color 0.3s, transform 0.2s;
         }
 
-        #get-report { background-color: #4caf50; color: white; }
-        #clear-data { background-color: #f44336; color: white; }
-        #summary-report { background-color: #2196f3; color: white; }
-        #add-marks { background-color: #ffeb3b; color: black; }
-        #absent-report { background-color: #607d8b; color: white; }
+        #get-report {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #clear-data {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #summary-report {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        #add-marks {
+            background-color: #ffeb3b;
+            color: black;
+        }
+
+
+        #absent-report {
+            background-color: #607d8b;
+            color: white;
+        }
 
         .button:hover {
             opacity: 0.9;
@@ -229,42 +265,94 @@
             color: #e96d15e7;
         }
 
-        @media only screen and (max-width: 768px) {
-            body { font-size: 14px; padding: 10px; }
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.2rem; }
-            #school-logo { width: 80px; left: 10px; top: 40px; }
-            #teacher-photo { width: 80px; }
-            .teacher-name { position: absolute; top: 136px; font-size: 14px; left: 20px; }
-            #current-date-time { font-size: 12px; }
-            table { font-size: 12px; }
-            th, td { padding: 8px; }
-            .button { padding: 8px 15px; font-size: 14px; }
+        #teacher-photo {
+            width: 100px; /* Adjust the size as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 10px; /* Space between the name and the photo */
+            border-radius: 5px; /* Optional: rounded corners */
+            display: block; /* Display as a block element */
+            margin-left: auto; /* Center the image */
+            margin-right: auto; /* Center the image */
         }
+
+        @media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    #school-logo {
+        width: 80px;
+        left: 10px;
+        top: 40px;
+    }
+
+    #teacher-photo {
+        width: 80px;
+        top: 8.2px;
+        right: 6.8px;
+    }
+
+    .teacher-name {
+            position: absolute;
+            top: 136px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #e96d15e7;
+            left: 20px;
+        }
+
+
+    #current-date-time {
+            font-size: 12px;
+            font-weight: bold;
+            color: #0b65da;
+            top: 258px;
+        }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+}
+    
     </style>
 </head>
 <body>
-
-<header>
-    <div class="nav-links">
-        <a href="intro.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</header>
-
-<div id="footer">
-    Designed By - <a href="https://wa.me/+94768846375">Thisum Jalitha</a> ©
-</div>
-
 <div id="app-container">
-    <img src="https://i.ibb.co/kqw53KT/mcglogo.png" alt="School Logo" id="school-logo">
     <h1>MCG E-Register</h1>
     <h2>Grade 9 - 2026</h2>
     <div class="teacher-name" id="teacher-name"></div>
-    <img id="teacher-photo" src="" alt="Teacher's Photo" style="display: none;" />
+    <img id="teacher-photo" src="10A-10.jfif" alt="Teacher's Photo" style="display: none;" />
     <div id="current-date-time"></div>
-
     <label for="class-select">Select Class:</label>
     <select id="class-select">
         <option value="9A">9A</option>
@@ -275,7 +363,6 @@
         <option value="9F">9F</option>
         <option value="9H">9H</option>
     </select>
-
     <div id="subject-container" style="display: none;">
         <label for="subject-select">Select Subject:</label>
         <select id="subject-select">
@@ -291,11 +378,13 @@
             <option value="Tamil">Tamil</option>
             <option value="PTS">PTS</option>
             <option value="Aesthetic">Aesthetic</option>
+
+
+
+
         </select>
     </div>
-
     <div id="summary"></div>
-    
     <table id="attendance-table">
         <thead>
             <tr>
@@ -307,17 +396,15 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Student rows added dynamically -->
+            <!-- Student rows will be added here dynamically -->
         </tbody>
     </table>
-
     <div id="summary-below"></div>
     <button id="clear-data" class="button">Clear Data</button>
     <button id="get-report" class="button">Get Report</button>
     <button id="absent-report" class="button">Absent Report</button>
     <button id="summary-report" class="button">Summary Report</button>
     <button id="add-marks" class="button">Add Marks</button>
-
     <div id="classSelection" style="display: none;">
         <label><input type="checkbox" value="9A"> 9A</label>
         <label><input type="checkbox" value="9B"> 9B</label>
@@ -330,204 +417,371 @@
         <button id="generate-summary" class="button">Generate Selected Summary Report</button>
     </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
-
 <script>
 const { jsPDF } = window.jspdf;
-
-const students = {          
+const students = {            
     '9A': [
-        { register: "01", name: "Mudith Minsara Karunayake" }, { register: "02", name: "W.W. Danujith Yasintha" },
-        { register: "03", name: "A.G. Teshika" }, { register: "04", name: "M.P. Wihas Wanujitha" },
-        { register: "05", name: "T. Pamuditha Edirisooriya" }, { register: "06", name: "M.G. Saven Sanjul" },
-        { register: "07", name: "Lesandul Harischandra" }, { register: "08", name: "T. Okitha Tharun Kawya" },
-        { register: "09", name: "M. Abesiri Jayawaradhana" }, { register: "10", name: "Saveen Mindinu Indigahawala" },
-        { register: "11", name: "K.H. Sithika Menula" }, { register: "12", name: "M.H. Pamudu Kaveen" },
-        { register: "13", name: "B.G. Dulina Dinhas" }, { register: "14", name: "W.M.W.G. Ometh Insara" },
-        { register: "15", name: "R. Sadiv Sankalpa" }, { register: "16", name: "K.G. Penuja Gambhir" },
-        { register: "17", name: "S. Nimsara Werasekara" }, { register: "18", name: "K. Kavuvithu Kodithuwakku" },
-        { register: "19", name: "Taruka Sadamin Punchihewa" }, { register: "20", name: "K.J.T. Senura Dulmitha" },
-        { register: "21", name: "K. Osanda Dhamsara" }, { register: "22", name: "N.K. Chamiru Hirusha" },
-        { register: "23", name: "S.H. Banura Bindusara" }, { register: "24", name: "T.A. Inuka Methdinu" },
-        { register: "25", name: "B. Chamindu Nethsara" }, { register: "26", name: "W. Senith Sandeepa" },
-        { register: "27", name: "Sethun Sasmitha" }, { register: "28", name: "W.H.D.D. Thenuwana" },
-        { register: "29", name: "M.D. Damindu Senesh" }, { register: "30", name: "D.K. Dineth Imasha" },
-        { register: "31", name: "U. Hansana Senevirathna" }, { register: "32", name: "S.S. Hiruka Mahanama" },
-        { register: "33", name: "Numeth Dinujaya Navarathna" }, { register: "34", name: "A.E.J.S. Sakith Nethvindu" },
-        { register: "35", name: "K.A.G. Himsara Imalsha" }, { register: "36", name: "K.G. Lithum Dhanujaya" },
-        { register: "37", name: "W.K. Sadew Yaneth" }, { register: "38", name: "M. Rethisha Mewan" },
-        { register: "39", name: "A.H.H. Kavinula" }, { register: "40", name: "B.H. Dasandu Sachith" },
-        { register: "41", name: "L.W. Piyenda Sasmitha" }, { register: "42", name: "H.G.A. Ranuka Sandul" },
-        { register: "43", name: "D.D. Dinula Damsuka" }, { register: "44", name: "J.A. Dulsana Dilkitha" }
-    ],
+  { register: "01", name: "Mudith Minsara Karunayake" },
+  { register: "02", name: "W.W. Danujith Yasintha" },
+  { register: "03", name: "A.G. Teshika" },
+  { register: "04", name: "M.P. Wihas Wanujitha" },
+  { register: "05", name: "T. Pamuditha Edirisooriya" },
+  { register: "06", name: "M.G. Saven Sanjul" },
+  { register: "07", name: "Lesandul Harischandra" },
+  { register: "08", name: "T. Okitha Tharun Kawya" },
+  { register: "09", name: "M. Abesiri Jayawaradhana" },
+  { register: "10", name: "Saveen Mindinu Indigahawala" },
+  { register: "11", name: "K.H. Sithika Menula" },
+  { register: "12", name: "M.H. Pamudu Kaveen" },
+  { register: "13", name: "B.G. Dulina Dinhas" },
+  { register: "14", name: "W.M.W.G. Ometh Insara" },
+  { register: "15", name: "R. Sadiv Sankalpa" },
+  { register: "16", name: "K.G. Penuja Gambhir" },
+  { register: "17", name: "S. Nimsara Werasekara" },
+  { register: "18", name: "K. Kavuvithu Kodithuwakku" },
+  { register: "19", name: "Taruka Sadamin Punchihewa" },
+  { register: "20", name: "K.J.T. Senura Dulmitha" },
+  { register: "21", name: "K. Osanda Dhamsara" },
+  { register: "22", name: "N.K. Chamiru Hirusha" },
+  { register: "23", name: "S.H. Banura Bindusara" },
+  { register: "24", name: "T.A. Inuka Methdinu" },
+  { register: "25", name: "B. Chamindu Nethsara" },
+  { register: "26", name: "W. Senith Sandeepa" },
+  { register: "27", name: "Sethun Sasmitha" },
+  { register: "28", name: "W.H.D.D. Thenuwana" },
+  { register: "29", name: "M.D. Damindu Senesh" },
+  { register: "30", name: "D.K. Dineth Imasha" },
+  { register: "31", name: "U. Hansana Senevirathna" },
+  { register: "32", name: "S.S. Hiruka Mahanama" },
+  { register: "33", name: "Numeth Dinujaya Navarathna" },
+  { register: "34", name: "A.E.J.S. Sakith Nethvindu" },
+  { register: "35", name: "K.A.G. Himsara Imalsha" },
+  { register: "36", name: "K.G. Lithum Dhanujaya" },
+  { register: "37", name: "W.K. Sadew Yaneth" },
+  { register: "38", name: "M. Rethisha Mewan" },
+  { register: "39", name: "A.H.H. Kavinula" },
+  { register: "40", name: "B.H. Dasandu Sachith" },
+  { register: "41", name: "L.W. Piyenda Sasmitha" },
+  { register: "42", name: "H.G.A. Ranuka Sandul" },
+  { register: "43", name: "D.D. Dinula Damsuka" },
+  { register: "44", name: "J.A. Dulsana Dilkitha" }
+],
+
     '9B': [
-        { register: "01", name: "K.I. Nikitha Ayush" }, { register: "02", name: "O.G.W. Aveesha Irushan" },
-        { register: "03", name: "R. Lohiru Sumanasekara" }, { register: "04", name: "R. Pankaja Wanigasekara" },
-        { register: "05", name: "A.P. Gevin Gewshitha" }, { register: "06", name: "W.H. Yashen Sankalpa" },
-        { register: "07", name: "K.L.W. Movindu Inoj" }, { register: "08", name: "K.D.D.S. Dissnayake" },
-        { register: "09", name: "M.A.M. Sandira Gunarathna" }, { register: "10", name: "M.G. Hasal Nethmira" },
-        { register: "11", name: "H.C. Rawishka Ranathunge" }, { register: "12", name: "M.M. Ganith Dilhara" },
-        { register: "13", name: "P.H. Sansith Nethvidu" }, { register: "14", name: "A.G.U. Ayanija Deshapriya" },
-        { register: "15", name: "M.A.K. Ranlaka Weerarathna" }, { register: "16", name: "H.G. Methum Yashodha" },
-        { register: "17", name: "S. Dulmeth Dilsandu" }, { register: "18", name: "P. Thisew Ewmith" },
-        { register: "19", name: "W. Sanmeth Thenuka" }, { register: "20", name: "N.H.T.S.S. Jayathunge" },
-        { register: "21", name: "P.H. Matheesha Denuwan" }, { register: "22", name: "A.W.M. Shaveen Nethsarsa" },
-        { register: "23", name: "P.G. Sanul Madubasha" }, { register: "24", name: "K.P. Anuth Shamalka" },
-        { register: "25", name: "T. Thumira Methnuka" }, { register: "26", name: "S.A. Chandul Thewjan" },
-        { register: "27", name: "H.B. Sumudu Prasanna" }, { register: "28", name: "G.L. Chanithu Dewdun" },
-        { register: "29", name: "M.A. Nadiw Sandul" }, { register: "30", name: "D.G. Suwahas Induwara" },
-        { register: "31", name: "K.K. Chanithu Gathsara" }, { register: "32", name: "W. Bihandu Yonal" },
-        { register: "33", name: "H.K. Oshen Uddeepana" }, { register: "34", name: "K.P. Yumeth Senuka" },
-        { register: "35", name: "U.L. Tunal Tinuka" }, { register: "36", name: "H.W. Thenuja Sandul" },
-        { register: "37", name: "U. Danidu Mathishan" }, { register: "38", name: "G. Rehan Thedasmin" },
-        { register: "39", name: "K.A. Hirusha Nethmika" }, { register: "40", name: "O.Y. Malmitha Munasinghe" },
-        { register: "41", name: "K.G. Thisandu Thumethya" }, { register: "42", name: "K. Chamath Jayashan" }
-    ],
+  { register: "01", name: "K.I. Nikitha Ayush" },
+  { register: "02", name: "O.G.W. Aveesha Irushan" },
+  { register: "03", name: "R. Lohiru Sumanasekara" },
+  { register: "04", name: "R. Pankaja Wanigasekara" },
+  { register: "05", name: "A.P. Gevin Gewshitha" },
+  { register: "06", name: "W.H. Yashen Sankalpa" },
+  { register: "07", name: "K.L.W. Movindu Inoj" },
+  { register: "08", name: "K.D.D.S. Dissnayake" },
+  { register: "09", name: "M.A.M. Sandira Gunarathna" },
+  { register: "10", name: "M.G. Hasal Nethmira" },
+  { register: "11", name: "H.C. Rawishka Ranathunge" },
+  { register: "12", name: "M.M. Ganith Dilhara" },
+  { register: "13", name: "P.H. Sansith Nethvidu" },
+  { register: "14", name: "A.G.U. Ayanija Deshapriya" },
+  { register: "15", name: "M.A.K. Ranlaka Weerarathna" },
+  { register: "16", name: "H.G. Methum Yashodha" },
+  { register: "17", name: "S. Dulmeth Dilsandu" },
+  { register: "18", name: "P. Thisew Ewmith" },
+  { register: "19", name: "W. Sanmeth Thenuka" },
+  { register: "20", name: "N.H.T.S.S. Jayathunge" },
+  { register: "21", name: "P.H. Matheesha Denuwan" },
+  { register: "22", name: "A.W.M. Shaveen Nethsarsa" },
+  { register: "23", name: "P.G. Sanul Madubasha" },
+  { register: "24", name: "K.P. Anuth Shamalka" },
+  { register: "25", name: "T. Thumira Methnuka" },
+  { register: "26", name: "S.A. Chandul Thewjan" },
+  { register: "27", name: "H.B. Sumudu Prasanna" },
+  { register: "28", name: "G.L. Chanithu Dewdun" },
+  { register: "29", name: "M.A. Nadiw Sandul" },
+  { register: "30", name: "D.G. Suwahas Induwara" },
+  { register: "31", name: "K.K. Chanithu Gathsara" },
+  { register: "32", name: "W. Bihandu Yonal" },
+  { register: "33", name: "H.K. Oshen Uddeepana" },
+  { register: "34", name: "K.P. Yumeth Senuka" },
+  { register: "35", name: "U.L. Tunal Tinuka" },
+  { register: "36", name: "H.W. Thenuja Sandul" },
+  { register: "37", name: "U. Danidu Mathishan" },
+  { register: "38", name: "G. Rehan Thedasmin" },
+  { register: "39", name: "K.A. Hirusha Nethmika" },
+  { register: "40", name: "O.Y. Malmitha Munasinghe" },
+  { register: "41", name: "K.G. Thisandu Thumethya" },
+  { register: "42", name: "K. Chamath Jayashan" }
+],
+            
     '9C': [
-        { register: "01", name: "Emith Hansoth" }, { register: "02", name: "Pavara Piumika" },
-        { register: "03", name: "Vimathu Nihansa" }, { register: "04", name: "A.T.G. Yonal Binuka" },
-        { register: "05", name: "Pumidu Anusara" }, { register: "06", name: "Lakira Lithum" },
-        { register: "07", name: "Dulitha Dinuwara" }, { register: "08", name: "Sandalu Nimsara" },
-        { register: "09", name: "W.D. Nethum Nethsara" }, { register: "10", name: "Prathiba Gajadira" },
-        { register: "11", name: "B. Sandaru Dinuka" }, { register: "12", name: "Sakuna Dulmitha" },
-        { register: "13", name: "Nithum Sandira" }, { register: "14", name: "N.G. Anusara Udantha" },
-        { register: "15", name: "Pumindu Pulmeth" }, { register: "16", name: "Sarasa Himabas" },
-        { register: "17", name: "Ranuda Randew" }, { register: "18", name: "Onel" },
-        { register: "19", name: "Dinuwara Vinudika" }, { register: "20", name: "J.A.S.P. Sathsara" },
-        { register: "21", name: "Sakith Chenuka" }, { register: "22", name: "S.A. Vihandu Vimath" },
-        { register: "23", name: "Dihen Munasinhe" }, { register: "24", name: "R. Binuka Vimadith" },
-        { register: "25", name: "K.G. Umesh Induwara" }, { register: "26", name: "Amesh Induwara" },
-        { register: "27", name: "Simira Sithumina" }, { register: "28", name: "T. Jasitha Damnuja" },
-        { register: "29", name: "Sasan Chiranthana" }, { register: "30", name: "Sadew Dewjan" },
-        { register: "31", name: "Adesha Abiman" }, { register: "32", name: "Sujan Menuja" },
-        { register: "33", name: "Dinuth Dewsith" }, { register: "34", name: "Oneth Jithsanda" },
-        { register: "35", name: "G.G. Thidas Yashoda" }, { register: "36", name: "W.D.K. Mesadu Didunada" },
-        { register: "37", name: "H.E.L. Dinuri Rasanjana" }, { register: "38", name: "H.H.G. Amod Methsuka" },
-        { register: "39", name: "W.P. Dineth Nethsara" }, { register: "40", name: "Nithish Prabashana" },
-        { register: "41", name: "Nethindu Pramuditha" }, { register: "42", name: "P.K. Nethum Himasara" },
-        { register: "43", name: "Tharusha Dineth" }, { register: "44", name: "Dulshan Lakshitha" },
-        { register: "45", name: "K. Ometh Vidumith" }, { register: "46", name: "K.P.R. Sankalpa" },
-        { register: "47", name: "Udara Hasarel" }, { register: "48", name: "Harshitha Kushan" }
-    ],
+  { register: "01", name: "Emith Hansoth" },
+  { register: "02", name: "Pavara Piumika" },
+  { register: "03", name: "Vimathu Nihansa" },
+  { register: "04", name: "A.T.G. Yonal Binuka" },
+  { register: "05", name: "Pumidu Anusara" },
+  { register: "06", name: "Lakira Lithum" },
+  { register: "07", name: "Dulitha Dinuwara" },
+  { register: "08", name: "Sandalu Nimsara" },
+  { register: "09", name: "W.D. Nethum Nethsara" },
+  { register: "10", name: "Prathiba Gajadira" },
+  { register: "11", name: "B. Sandaru Dinuka" },
+  { register: "12", name: "Sakuna Dulmitha" },
+  { register: "13", name: "Nithum Sandira" },
+  { register: "14", name: "N.G. Anusara Udantha" },
+  { register: "15", name: "Pumindu Pulmeth" },
+  { register: "16", name: "Sarasa Himabas" },
+  { register: "17", name: "Ranuda Randew" },
+  { register: "18", name: "Onel" },
+  { register: "19", name: "Dinuwara Vinudika" },
+  { register: "20", name: "J.A.S.P. Sathsara" },
+  { register: "21", name: "Sakith Chenuka" },
+  { register: "22", name: "S.A. Vihandu Vimath" },
+  { register: "23", name: "Dihen Munasinhe" },
+  { register: "24", name: "R. Binuka Vimadith" },
+  { register: "25", name: "K.G. Umesh Induwara" },
+  { register: "26", name: "Amesh Induwara" },
+  { register: "27", name: "Simira Sithumina" },
+  { register: "28", name: "T. Jasitha Damnuja" },
+  { register: "29", name: "Sasan Chiranthana" },
+  { register: "30", name: "Sadew Dewjan" },
+  { register: "31", name: "Adesha Abiman" },
+  { register: "32", name: "Sujan Menuja" },
+  { register: "33", name: "Dinuth Dewsith" },
+  { register: "34", name: "Oneth Jithsanda" },
+  { register: "35", name: "G.G. Thidas Yashoda" },
+  { register: "36", name: "W.D.K. Mesadu Didunada" },
+  { register: "37", name: "H.E.L. Dinuri Rasanjana" },
+  { register: "38", name: "H.H.G. Amod Methsuka" },
+  { register: "39", name: "W.P. Dineth Nethsara" },
+  { register: "40", name: "Nithish Prabashana" },
+  { register: "41", name: "Nethindu Pramuditha" },
+  { register: "42", name: "P.K. Nethum Himasara" },
+  { register: "43", name: "Tharusha Dineth" },
+  { register: "44", name: "Dulshan Lakshitha" },
+  { register: "45", name: "K. Ometh Vidumith" },
+  { register: "46", name: "K.P.R. Sankalpa" },
+  { register: "47", name: "Udara Hasarel" },
+  { register: "48", name: "Harshitha Kushan" }
+],
+            
     '9D': [
-        { register: "01", name: "Isira Dineth" }, { register: "02", name: "Yonal Hewapathirana" },
-        { register: "03", name: "W.P.G. Shanul Hanseth" }, { register: "04", name: "P.D. Dehan Chandul" },
-        { register: "05", name: "Imeth Sithnuka" }, { register: "06", name: "R.G. Hiran Sandeepa" },
-        { register: "07", name: "K.P.Y.M. Karunathilaka" }, { register: "08", name: "Aken Udan" },
-        { register: "09", name: "Vidusith Nethmira" }, { register: "10", name: "Binuwara Gunathilaka" },
-        { register: "11", name: "Thinura Kenuka" }, { register: "12", name: "Savindu Rivisara" },
-        { register: "13", name: "Rithika Chandil" }, { register: "14", name: "Sadew Wickramarathna" },
-        { register: "15", name: "Manaw Abhiman" }, { register: "16", name: "Sandira Thebuwanarachchi" },
-        { register: "17", name: "Miyuru Geethma" }, { register: "18", name: "Jenitha Lomira" },
-        { register: "19", name: "Hesara Niraga Pasqual" }, { register: "20", name: "Gevindu Wenupathi" },
-        { register: "21", name: "T.H.N. Mahoga Mndasmitha" }, { register: "22", name: "Buvindu Desmitha" },
-        { register: "23", name: "Manuka Vithanage" }, { register: "24", name: "Kalnuka Hasmal" },
-        { register: "25", name: "Thisen Vinsara" }, { register: "26", name: "P.M.K.K. Lisara" },
-        { register: "27", name: "Chanul Sandew" }, { register: "28", name: "Chenitha Nejan" },
-        { register: "29", name: "Shenal Keshawa" }, { register: "30", name: "Kisandu Methsuka" },
-        { register: "31", name: "Rumika Kethmin" }, { register: "32", name: "Nethum Nethsara" },
-        { register: "33", name: "Thinula Gunawardana" }, { register: "34", name: "H.P.A. Insith" },
-        { register: "35", name: "Chirana Cirandith" }, { register: "36", name: "Mahima Randul" },
-        { register: "37", name: "Rumithu Ramthaka" }, { register: "38", name: "Kinura Abhiman" },
-        { register: "39", name: "Sachitha Senal" }, { register: "40", name: "Thinuga Semitha" },
-        { register: "41", name: "Sanul Kenuka" }, { register: "42", name: "Thinula Nimnaka" },
-        { register: "43", name: "U.D. Gimhana Imayuru" }, { register: "44", name: "P.G. Yasiru Sandesh" },
-        { register: "45", name: "H.M. Sandaru Thisethmal" }, { register: "46", name: "M.G. Kesaru Nulan" },
-        { register: "47", name: "H.G. Randaya" }, { register: "48", name: "G. Hesara Thenuja" },
-        { register: "49", name: "Savinu Thathsara Kaluphana" }
-    ],
+  { register: "01", name: "Isira Dineth" },
+  { register: "02", name: "Yonal Hewapathirana" },
+  { register: "03", name: "W.P.G. Shanul Hanseth" },
+  { register: "04", name: "P.D. Dehan Chandul" },
+  { register: "05", name: "Imeth Sithnuka" },
+  { register: "06", name: "R.G. Hiran Sandeepa" },
+  { register: "07", name: "K.P.Y.M. Karunathilaka" },
+  { register: "08", name: "Aken Udan" },
+  { register: "09", name: "Vidusith Nethmira" },
+  { register: "10", name: "Binuwara Gunathilaka" },
+  { register: "11", name: "Thinura Kenuka" },
+  { register: "12", name: "Savindu Rivisara" },
+  { register: "13", name: "Rithika Chandil" },
+  { register: "14", name: "Sadew Wickramarathna" },
+  { register: "15", name: "Manaw Abhiman" },
+  { register: "16", name: "Sandira Thebuwanarachchi" },
+  { register: "17", name: "Miyuru Geethma" },
+  { register: "18", name: "Jenitha Lomira" },
+  { register: "19", name: "Hesara Niraga Pasqual" },
+  { register: "20", name: "Gevindu Wenupathi" },
+  { register: "21", name: "T.H.N. Mahoga Mndasmitha" },
+  { register: "22", name: "Buvindu Desmitha" },
+  { register: "23", name: "Manuka Vithanage" },
+  { register: "24", name: "Kalnuka Hasmal" },
+  { register: "25", name: "Thisen Vinsara" },
+  { register: "26", name: "P.M.K.K. Lisara" },
+  { register: "27", name: "Chanul Sandew" },
+  { register: "28", name: "Chenitha Nejan" },
+  { register: "29", name: "Shenal Keshawa" },
+  { register: "30", name: "Kisandu Methsuka" },
+  { register: "31", name: "Rumika Kethmin" },
+  { register: "32", name: "Nethum Nethsara" },
+  { register: "33", name: "Thinula Gunawardana" },
+  { register: "34", name: "H.P.A. Insith" },
+  { register: "35", name: "Chirana Cirandith" },
+  { register: "36", name: "Mahima Randul" },
+  { register: "37", name: "Rumithu Ramthaka" },
+  { register: "38", name: "Kinura Abhiman" },
+  { register: "39", name: "Sachitha Senal" },
+  { register: "40", name: "Thinuga Semitha" },
+  { register: "41", name: "Sanul Kenuka" },
+  { register: "42", name: "Thinula Nimnaka" },
+  { register: "43", name: "U.D. Gimhana Imayuru" },
+  { register: "44", name: "P.G. Yasiru Sandesh" },
+  { register: "45", name: "H.M. Sandaru Thisethmal" },
+  { register: "46", name: "M.G. Kesaru Nulan" },
+  { register: "47", name: "H.G. Randaya" },
+  { register: "48", name: "G. Hesara Thenuja" },
+  { register: "49", name: "Savinu Thathsara Kaluphana" }
+],
+         
+            
     '9E': [
-        { register: "01", name: "Sithija Dahanayake" }, { register: "02", name: "A.K.M.M. Tharul" },
-        { register: "03", name: "Seja Siyath" }, { register: "04", name: "Ramika Randesh" },
-        { register: "05", name: "Hasandu Hirusara" }, { register: "06", name: "Akitha Sesath" },
-        { register: "07", name: "Chenul Dulnitha" }, { register: "08", name: "Thivain Demitha" },
-        { register: "09", name: "Malindu Mandiw" }, { register: "10", name: "R.H.A. Anusara" },
-        { register: "11", name: "R.H.A. Pudasara" }, { register: "12", name: "Sanithu Kiyoshi" },
-        { register: "13", name: "A.S. Wannige" }, { register: "14", name: "Rithusha Peveen" },
-        { register: "15", name: "Kenuka Hansidu" }, { register: "16", name: "Sandil Dilmeth" },
-        { register: "17", name: "Sevindu Vidunitha" }, { register: "18", name: "Lakira Devtharu" },
-        { register: "19", name: "Disas Dinsara" }, { register: "20", name: "Ruhan Ranyuru" },
-        { register: "21", name: "Mineth Lakdinu" }, { register: "22", name: "Wosanda Kithsara" },
-        { register: "23", name: "Geethma Sathsara" }, { register: "24", name: "Chanula Dulneth" },
-        { register: "25", name: "Kisara Nanayakkara" }, { register: "26", name: "Chenuka Sithmal" },
-        { register: "27", name: "Himasala Ranketh" }, { register: "28", name: "Nulan De Silva" },
-        { register: "29", name: "Kavindu Dahanayake" }, { register: "30", name: "Hirupama Samaranayake" },
-        { register: "31", name: "Sandew Dinsara" }, { register: "32", name: "Yenuka Binal" },
-        { register: "33", name: "Kulindu Keshawa" }, { register: "34", name: "Keshawa Hasod" },
-        { register: "35", name: "Sasen Sasvidu" }, { register: "36", name: "J.T. Gunathilake" },
-        { register: "37", name: "Abiru Insitha" }, { register: "38", name: "Gesandu Methsara" },
-        { register: "39", name: "Sayuru Suwahas" }, { register: "40", name: "Tsala Dinimuthu" },
-        { register: "41", name: "Jevindu Uthsara" }, { register: "42", name: "Vinuga Kithsuka" },
-        { register: "43", name: "Kaveen Hansitha" }, { register: "44", name: "Thinula Methdinu" },
-        { register: "45", name: "Manuga Mansana" }, { register: "46", name: "Chathuka Chaveen" },
-        { register: "47", name: "Viduja Randiv" }, { register: "48", name: "Nadula Udana" },
-        { register: "49", name: "Levan Sasmitha" }
-    ],
+  { register: "01", name: "Sithija Dahanayake" },
+  { register: "02", name: "A.K.M.M. Tharul" },
+  { register: "03", name: "Seja Siyath" },
+  { register: "04", name: "Ramika Randesh" },
+  { register: "05", name: "Hasandu Hirusara" },
+  { register: "06", name: "Akitha Sesath" },
+  { register: "07", name: "Chenul Dulnitha" },
+  { register: "08", name: "Thivain Demitha" },
+  { register: "09", name: "Malindu Mandiw" },
+  { register: "10", name: "R.H.A. Anusara" },
+  { register: "11", name: "R.H.A. Pudasara" },
+  { register: "12", name: "Sanithu Kiyoshi" },
+  { register: "13", name: "A.S. Wannige" },
+  { register: "14", name: "Rithusha Peveen" },
+  { register: "15", name: "Kenuka Hansidu" },
+  { register: "16", name: "Sandil Dilmeth" },
+  { register: "17", name: "Sevindu Vidunitha" },
+  { register: "18", name: "Lakira Devtharu" },
+  { register: "19", name: "Disas Dinsara" },
+  { register: "20", name: "Ruhan Ranyuru" },
+  { register: "21", name: "Mineth Lakdinu" },
+  { register: "22", name: "Wosanda Kithsara" },
+  { register: "23", name: "Geethma Sathsara" },
+  { register: "24", name: "Chanula Dulneth" },
+  { register: "25", name: "Kisara Nanayakkara" },
+  { register: "26", name: "Chenuka Sithmal" },
+  { register: "27", name: "Himasala Ranketh" },
+  { register: "28", name: "Nulan De Silva" },
+  { register: "29", name: "Kavindu Dahanayake" },
+  { register: "30", name: "Hirupama Samaranayake" },
+  { register: "31", name: "Sandew Dinsara" },
+  { register: "32", name: "Yenuka Binal" },
+  { register: "33", name: "Kulindu Keshawa" },
+  { register: "34", name: "Keshawa Hasod" },
+  { register: "35", name: "Sasen Sasvidu" },
+  { register: "36", name: "J.T. Gunathilake" },
+  { register: "37", name: "Abiru Insitha" },
+  { register: "38", name: "Gesandu Methsara" },
+  { register: "39", name: "Sayuru Suwahas" },
+  { register: "40", name: "Tsala Dinimuthu" },
+  { register: "41", name: "Jevindu Uthsara" },
+  { register: "42", name: "Vinuga Kithsuka" },
+  { register: "43", name: "Kaveen Hansitha" },
+  { register: "44", name: "Thinula Methdinu" },
+  { register: "45", name: "Manuga Mansana" },
+  { register: "46", name: "Chathuka Chaveen" },
+  { register: "47", name: "Viduja Randiv" },
+  { register: "48", name: "Nadula Udana" },
+  { register: "49", name: "Levan Sasmitha" }
+],
+           
     '9F': [
-        { register: "01", name: "N.W.G. Mihigu Bimsara" }, { register: "02", name: "G. Sithuka Nisalitha" },
-        { register: "03", name: "Chenul Gethmira" }, { register: "04", name: "S.S. Wijemanna" },
-        { register: "05", name: "G.H.L. Lochan Rathnasiri" }, { register: "06", name: "K.V. Pawan Dilshan" },
-        { register: "07", name: "D.B. Hansaja Warunaka" }, { register: "08", name: "S. Lasindu Thenuka De Silva" },
-        { register: "09", name: "A. Indusara Rupasinghe" }, { register: "10", name: "Jalitha Chamikara Godage" },
-        { register: "11", name: "S. Dinsara Wijesekara" }, { register: "12", name: "S.C. Sanuka Chanthusha" },
-        { register: "13", name: "Tharul Yoshi" }, { register: "14", name: "L.A.H. Disas Perera" },
-        { register: "15", name: "Ometh Dulneth" }, { register: "16", name: "R.H. Akindu Dulkith" },
-        { register: "17", name: "T.G. Daham Nethsara" }, { register: "18", name: "L.N.G. Sanuka Akein" },
-        { register: "19", name: "K. Wesandu Gavesh" }, { register: "20", name: "D.M. Senithu Kethmin" },
-        { register: "21", name: "E. Gimalsha Adeesh Lochana" }, { register: "22", name: "J.K. Vidul Sethuja" },
-        { register: "23", name: "H.B.S. Adithya Sandeepa" }, { register: "24", name: "M.A.M. Nethsara" },
-        { register: "25", name: "O.R. Gunarathne" }, { register: "26", name: "Arunsha Senehas" },
-        { register: "27", name: "J.R. Danitha Piyumal" }, { register: "28", name: "H.W. Bhanu Prabhash" },
-        { register: "29", name: "M.A. Jevindu Thushal" }, { register: "30", name: "M.G. Lelum Damsithu" },
-        { register: "31", name: "U.D. Heshan Hansaka" }, { register: "32", name: "M. Laleesha Lalithya" },
-        { register: "33", name: "B.G. Bimasha Sasmitha" }, { register: "34", name: "G.D. Yehen Bimsara" },
-        { register: "35", name: "W.L.G.A. Athsara Pasandul" }, { register: "36", name: "K.M. Saula Lithum" },
-        { register: "37", name: "K.G. Nihindu Savisara" }, { register: "38", name: "P.W. Viduna Ometh" },
-        { register: "39", name: "P.K. Movindu Ransath" }, { register: "40", name: "A.G. Sithil Dilanaka" },
-        { register: "41", name: "W. Miyuru Hasarell" }, { register: "42", name: "T.H. Ameesha Hasaral" },
-        { register: "43", name: "S.R.S. Nanayakkara" }, { register: "44", name: "B.L. Poshitha Ananda" },
-        { register: "45", name: "Chanutha Adeepa" }, { register: "46", name: "T.V. Amasha Dinujaya" },
-        { register: "47", name: "A. Osanda Piyumal" }, { register: "48", name: "W. Nadila Theshan" },
-        { register: "49", name: "I.D.S. Mintharu" }
-    ],
-    '9H': [
-        { register: "01", name: "W.H. Binara Suwahas" }, { register: "02", name: "Y.B. Methmin Kithnada" },
-        { register: "03", name: "R.A. Inuka Hasmitha" }, { register: "04", name: "L.B. Thehan Dinsitha" },
-        { register: "05", name: "W.M. Minuga Ranaweera" }, { register: "06", name: "C. Damsath Wewewala" },
-        { register: "07", name: "W.K. Binuka Methsilu" }, { register: "08", name: "K.G. Thasan Nethvin" },
-        { register: "09", name: "Gangul Jayawardhana" }, { register: "10", name: "D. Oshada Mandara" },
-        { register: "11", name: "W.A. Dulanya Dihansana" }, { register: "12", name: "E.A. Kavindu Kushan" },
-        { register: "13", name: "D.G. Ashinsa Umeda" }, { register: "14", name: "Ayashkantha Udakara" },
-        { register: "15", name: "H.P. Yumeth Thewjan" }, { register: "16", name: "T.A.M.L.Y.B. Gunasekara" },
-        { register: "17", name: "D.A.J. Chenuka Mithsara" }, { register: "18", name: "G.G. Akash Induwara" },
-        { register: "19", name: "N. Shenal Wijesinghe" }, { register: "20", name: "A.G.W. Sandamal" },
-        { register: "21", name: "E. Sasandu Nimdiya" }, { register: "22", name: "M.H. Sadith Senhiru" },
-        { register: "23", name: "K.L.W. Yunath Sasvidu" }, { register: "24", name: "Mithma Minindu" },
-        { register: "25", name: "Vihas Minindu" }, { register: "26", name: "N.P. Kumaranayaka" },
-        { register: "27", name: "Dulneth Nimdiya" }, { register: "28", name: "N.M. Dissanayaka" },
-        { register: "29", name: "M.M.G. Hasindu" }, { register: "30", name: "D. Senan Hegoda" },
-        { register: "31", name: "W.P. Senuja Dison" }, { register: "32", name: "Yehen Dinsitha" },
-        { register: "33", name: "K. Dewmina Janma" }, { register: "34", name: "H.A. Dinura Lasanga" },
-        { register: "35", name: "K.H.R. Dulnitha" }, { register: "36", name: "V.G. Ramithu Sanulaka" },
-        { register: "37", name: "W.A. Hirusha Hasakelum" }, { register: "38", name: "A. Sasan Upadya" },
-        { register: "39", name: "L.W.D. Kumath" }, { register: "40", name: "M.M. Sandas Hirudew" },
-        { register: "41", name: "Y. Chandupa Liyanage" }, { register: "42", name: "T.D.W. Karunarathana" },
-        { register: "43", name: "B.H. Sandew Sasmitha" }, { register: "44", name: "K.G.Y. Ranmina" },
-        { register: "45", name: "K.H.D. Hirunaka" }, { register: "46", name: "J.W. Minthula Rehadu" },
-        { register: "47", name: "N.W.H.P. Senuja Vihas" }
-    ]
-};
+  { register: "01", name: "N.W.G. Mihigu Bimsara" },
+  { register: "02", name: "G. Sithuka Nisalitha" },
+  { register: "03", name: "Chenul Gethmira" },
+  { register: "04", name: "S.S. Wijemanna" },
+  { register: "05", name: "G.H.L. Lochan Rathnasiri" },
+  { register: "06", name: "K.V. Pawan Dilshan" },
+  { register: "07", name: "D.B. Hansaja Warunaka" },
+  { register: "08", name: "S. Lasindu Thenuka De Silva" },
+  { register: "09", name: "A. Indusara Rupasinghe" },
+  { register: "10", name: "Jalitha Chamikara Godage" },
+  { register: "11", name: "S. Dinsara Wijesekara" },
+  { register: "12", name: "S.C. Sanuka Chanthusha" },
+  { register: "13", name: "Tharul Yoshi" },
+  { register: "14", name: "L.A.H. Disas Perera" },
+  { register: "15", name: "Ometh Dulneth" },
+  { register: "16", name: "R.H. Akindu Dulkith" },
+  { register: "17", name: "T.G. Daham Nethsara" },
+  { register: "18", name: "L.N.G. Sanuka Akein" },
+  { register: "19", name: "K. Wesandu Gavesh" },
+  { register: "20", name: "D.M. Senithu Kethmin" },
+  { register: "21", name: "E. Gimalsha Adeesh Lochana" },
+  { register: "22", name: "J.K. Vidul Sethuja" },
+  { register: "23", name: "H.B.S. Adithya Sandeepa" },
+  { register: "24", name: "M.A.M. Nethsara" },
+  { register: "25", name: "O.R. Gunarathne" },
+  { register: "26", name: "Arunsha Senehas" },
+  { register: "27", name: "J.R. Danitha Piyumal" },
+  { register: "28", name: "H.W. Bhanu Prabhash" },
+  { register: "29", name: "M.A. Jevindu Thushal" },
+  { register: "30", name: "M.G. Lelum Damsithu" },
+  { register: "31", name: "U.D. Heshan Hansaka" },
+  { register: "32", name: "M. Laleesha Lalithya" },
+  { register: "33", name: "B.G. Bimasha Sasmitha" },
+  { register: "34", name: "G.D. Yehen Bimsara" },
+  { register: "35", name: "W.L.G.A. Athsara Pasandul" },
+  { register: "36", name: "K.M. Saula Lithum" },
+  { register: "37", name: "K.G. Nihindu Savisara" },
+  { register: "38", name: "P.W. Viduna Ometh" },
+  { register: "39", name: "P.K. Movindu Ransath" },
+  { register: "40", name: "A.G. Sithil Dilanaka" },
+  { register: "41", name: "W. Miyuru Hasarell" },
+  { register: "42", name: "T.H. Ameesha Hasaral" },
+  { register: "43", name: "S.R.S. Nanayakkara" },
+  { register: "44", name: "B.L. Poshitha Ananda" },
+  { register: "45", name: "Chanutha Adeepa" },
+  { register: "46", name: "T.V. Amasha Dinujaya" },
+  { register: "47", name: "A. Osanda Piyumal" },
+  { register: "48", name: "W. Nadila Theshan" },
+  { register: "49", name: "I.D.S. Mintharu" }
+],
+
+  '9H': [
+  { register: "01", name: "W.H. Binara Suwahas" },
+  { register: "02", name: "Y.B. Methmin Kithnada" },
+  { register: "03", name: "R.A. Inuka Hasmitha" },
+  { register: "04", name: "L.B. Thehan Dinsitha" },
+  { register: "05", name: "W.M. Minuga Ranaweera" },
+  { register: "06", name: "C. Damsath Wewewala" },
+  { register: "07", name: "W.K. Binuka Methsilu" },
+  { register: "08", name: "K.G. Thasan Nethvin" },
+  { register: "09", name: "Gangul Jayawardhana" },
+  { register: "10", name: "D. Oshada Mandara" },
+  { register: "11", name: "W.A. Dulanya Dihansana" },
+  { register: "12", name: "E.A. Kavindu Kushan" },
+  { register: "13", name: "D.G. Ashinsa Umeda" },
+  { register: "14", name: "Ayashkantha Udakara" },
+  { register: "15", name: "H.P. Yumeth Thewjan" },
+  { register: "16", name: "T.A.M.L.Y.B. Gunasekara" },
+  { register: "17", name: "D.A.J. Chenuka Mithsara" },
+  { register: "18", name: "G.G. Akash Induwara" },
+  { register: "19", name: "N. Shenal Wijesinghe" },
+  { register: "20", name: "A.G.W. Sandamal" },
+  { register: "21", name: "E. Sasandu Nimdiya" },
+  { register: "22", name: "M.H. Sadith Senhiru" },
+  { register: "23", name: "K.L.W. Yunath Sasvidu" },
+  { register: "24", name: "Mithma Minindu" },
+  { register: "25", name: "Vihas Minindu" },
+  { register: "26", name: "N.P. Kumaranayaka" },
+  { register: "27", name: "Dulneth Nimdiya" },
+  { register: "28", name: "N.M. Dissanayaka" },
+  { register: "29", name: "M.M.G. Hasindu" },
+  { register: "30", name: "D. Senan Hegoda" },
+  { register: "31", name: "W.P. Senuja Dison" },
+  { register: "32", name: "Yehen Dinsitha" },
+  { register: "33", name: "K. Dewmina Janma" },
+  { register: "34", name: "H.A. Dinura Lasanga" },
+  { register: "35", name: "K.H.R. Dulnitha" },
+  { register: "36", name: "V.G. Ramithu Sanulaka" },
+  { register: "37", name: "W.A. Hirusha Hasakelum" },
+  { register: "38", name: "A. Sasan Upadya" },
+  { register: "39", name: "L.W.D. Kumath" },
+  { register: "40", name: "M.M. Sandas Hirudew" },
+  { register: "41", name: "Y. Chandupa Liyanage" },
+  { register: "42", name: "T.D.W. Karunarathana" },
+  { register: "43", name: "B.H. Sandew Sasmitha" },
+  { register: "44", name: "K.G.Y. Ranmina" },
+  { register: "45", name: "K.H.D. Hirunaka" },
+  { register: "46", name: "J.W. Minthula Rehadu" },
+  { register: "47", name: "N.W.H.P. Senuja Vihas" }
+]
+
+        };
 
 const teachers = {
-    "9A": { name: "Mrs. G.N.G Nishani", phone: "071 225 9163" },
-    "9B": { name: "Mrs. H.K. Amali Udayangi", phone: "077 603 6947" },
-    "9C": { name: "Mr. T.H.D Chathulakkana", phone: "077 198 6515" },
-    "9D": { name: "Mrs. W.M.S.T.K. Wijekoon", phone: "077 558 3733" },
-    "9E": { name: "Mrs. W. Sewwandi", phone: "077 722 9242" },
-    "9F": { name: "Mrs. V. Hemali", phone: "077 358 0485" },
-    "9H": { name: "Mrs. Bhadra Senanayake", phone: "077 358 0485" }
+  "9A": { name: "Mrs. G.N.G Nishani", phone: "073" },
+  "9B": { name: "Mrs. H.K. Amali Udayangi", phone: "0777" },
+  "9C": { name: "Mr. T.H.D Chathulakkana", phone: "077 15" },
+  "9D": { name: "Mrs. W.M.S.T.K. Wijekoon", phone: "077 553" },
+  "9E": { name: "Mrs. W. Sewwandi", phone: "077 72" },
+  "9F": { name: "Mrs. V. Hemali", phone: "485" },
+  "9H": { name: "Mrs. Bhadra Senanayake", phone: "485" },
 };
 
 const teacherPhotos = {
@@ -540,31 +794,30 @@ const teacherPhotos = {
     "9H": ""
 };
 
+const classTeachers = {
+  "9A": { name: "Mrs. G.N.G Nishani", phone: "071 225 9163", photoUrl: "https://i.ibb.co/1tFVvzCx/2.png"},
+  "9B": { name: "Mrs. H.K. Amali Udayangi", phone: "077 603 6947", photoUrl: "https://i.ibb.co/210JnMWV/IMG-9660.jpg" },
+  "9C": { name: "Mr. T.H.D Chathulakkana", phone: "077 198 6515", photoUrl: "https://i.ibb.co/CK5TTz2k/1.png" },
+  "9D": { name: "Mrs. W.M.S.T.K. Wijekoon", phone: "077 558 3733", photoUrl: "" },
+  "9E": { name: "Mrs. W. Sewwandi", phone: "077 722 9242", photoUrl: "https://i.ibb.co/FbQpgQ6y/12c6818d-cb1b-4377-a44e-05e697c43eb3.jpg" },
+  "9F": { name: "Mrs. V. Hemali", phone: "077 358 0485", photoUrl: "" },
+  "9H": { name: "Mrs. Bhadra Senanayake", phone: "077 358 0485", photoUrl: "" },
+};
+
 const classSelect = document.getElementById('class-select');
 const attendanceTable = document.getElementById('attendance-table').getElementsByTagName('tbody')[0];
 const currentDateElement = document.getElementById('current-date-time');
 const teacherNameElement = document.getElementById('teacher-name');
-const summaryElement = document.getElementById('summary');
-const summaryBelowElement = document.getElementById('summary-below');
-
-const addMarksButton = document.getElementById('add-marks');
-const marksColumn = document.getElementById('marks-column');
-const subjectContainer = document.getElementById('subject-container');
-const subjectSelect = document.getElementById('subject-select');
 const summaryReportButton = document.getElementById('summary-report');
 const classSelection = document.getElementById('classSelection');
 const generateSummaryButton = document.getElementById('generate-summary');
-
+const addMarksButton = document.getElementById('add-marks');
+const subjectContainer = document.getElementById('subject-container');
+const subjectSelect = document.getElementById('subject-select');
+const marksColumn = document.getElementById('marks-column');
+const summaryElement = document.getElementById('summary');
+const summaryBelowElement = document.getElementById('summary-below');
 let addingMarks = false;
-
-function getGrade(marks) {
-    if (isNaN(marks)) return 'N/A';
-    if (marks >= 75) return 'A';
-    if (marks >= 65) return 'B';
-    if (marks >= 55) return 'C';
-    if (marks >= 35) return 'S';
-    return 'W';
-}
 
 function updateDateTime() {
     const now = new Date();
@@ -573,280 +826,268 @@ function updateDateTime() {
     currentDateElement.innerText = `Date: ${formattedDate} Time: ${formattedTime}`;
 }
 setInterval(updateDateTime, 1000);
-updateDateTime();
+
+function getGrade(score) {
+  if (score >= 75) return 'A';
+  if (score >= 65) return 'B';
+  if (score >= 55) return 'C';
+  if (score >= 35) return 'S';
+  return 'W';
+}
 
 function updateSummary() {
-    const selectedClass = classSelect.value;
+  const selectedClass = classSelect.value;
+  const totalStudents = students[selectedClass].length;
+  let presentCount = 0;
+  students[selectedClass].forEach(student => {
+    if (localStorage.getItem(`${selectedClass}-${student.register}`)) {
+      presentCount++;
+    }
+  });
+  const absentCount = totalStudents - presentCount;
+  const summaryText = `Total Students: ${totalStudents} | Present: ${presentCount} | Absent: ${absentCount}`;
+  summaryElement.textContent = summaryText;
+  summaryBelowElement.textContent = summaryText;
+  teacherNameElement.textContent = `Class Teacher: ${teachers[selectedClass].name}`;
+  const teacherPhoto = document.getElementById("teacher-photo");
+  teacherPhoto.src = teacherPhotos[selectedClass];
+  teacherPhoto.style.display = "block";
+}
+
+function loadStudents() {
+  const selectedClass = classSelect.value;
+  attendanceTable.innerHTML = '';
+  students[selectedClass].forEach(student => {
+    const row = attendanceTable.insertRow();
+    const markCell = row.insertCell(0);
+    const registerCell = row.insertCell(1);
+    const nameCell = row.insertCell(2);
+    const timeCell = row.insertCell(3);
+    const marksCell = row.insertCell(4);
+    const checkbox = document.createElement('div');
+    checkbox.className = 'custom-checkbox';
+    const isChecked = localStorage.getItem(`${selectedClass}-${student.register}`);
+    if (isChecked) {
+      checkbox.classList.add('checked');
+      timeCell.textContent = isChecked;
+    }
+    checkbox.addEventListener('click', function () {
+      checkbox.classList.toggle('checked');
+      const isChecked = checkbox.classList.contains('checked');
+      if (isChecked) {
+        const time = new Date().toLocaleTimeString();
+        timeCell.textContent = time;
+        localStorage.setItem(`${selectedClass}-${student.register}`, time);
+      } else {
+        timeCell.textContent = '';
+        localStorage.removeItem(`${selectedClass}-${student.register}`);
+      }
+      updateSummary();
+    });
+    markCell.appendChild(checkbox);
+    registerCell.textContent = student.register;
+    nameCell.textContent = student.name;
+    const marksInput = document.createElement('input');
+    marksInput.type = 'number';
+    marksInput.style.display = 'none';
+    marksInput.dataset.register = student.register;
+    marksInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        const nextInput = marksInput.parentElement.parentElement.nextElementSibling?.querySelector('input[type="number"]');
+        if (nextInput) {
+          nextInput.focus();
+        }
+      }
+    });
+    marksCell.appendChild(marksInput);
+  });
+  updateSummary();
+}
+
+document.getElementById('clear-data').addEventListener('click', () => {
+  const selectedClass = classSelect.value;
+  students[selectedClass].forEach(student => {
+    localStorage.removeItem(`${selectedClass}-${student.register}`);
+  });
+  loadStudents();
+});
+
+document.getElementById('get-report').addEventListener('click', () => {
+  const selectedClass = classSelect.value;
+  const doc = new jsPDF();
+  doc.setFontSize(12);
+  doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
+
+  const teacher = classTeachers[selectedClass];
+  const teacherImageUrl = teacher.photoUrl;
+
+  const img = new Image();
+  img.src = teacherImageUrl;
+  img.onload = () => {
+    doc.addImage(img, 'JPEG', 160, 4, 28, 31);
+
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+    doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
+
+    let tableData = [];
     const totalStudents = students[selectedClass].length;
     let presentCount = 0;
 
     students[selectedClass].forEach(student => {
-        if (localStorage.getItem(`${selectedClass}-${student.register}`)) {
-            presentCount++;
-        }
+      const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
+      const status = isPresent ? `Present` : 'Absent';
+      tableData.push({
+        register: student.register,
+        name: student.name,
+        status: status,
+        rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
+      });
+      if (isPresent) {
+        presentCount++;
+      }
     });
 
     const absentCount = totalStudents - presentCount;
-    const summaryText = `Total Students: ${totalStudents} | Present: ${presentCount} | Absent: ${absentCount}`;
-    
-    summaryElement.textContent = summaryText;
-    summaryBelowElement.textContent = summaryText;
-    teacherNameElement.textContent = `Class Teacher: ${teachers[selectedClass].name}`;
-    
-    const teacherPhoto = document.getElementById("teacher-photo");
-    if (teacherPhotos[selectedClass]) {
-        teacherPhoto.src = teacherPhotos[selectedClass];
-        teacherPhoto.style.display = "block";
-    } else {
-        teacherPhoto.style.display = "none";
-    }
-}
+    doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
 
-function loadStudents() {
-    const selectedClass = classSelect.value;
-    attendanceTable.innerHTML = '';
+    const columns = [
+      { header: 'Register Number', dataKey: 'register' },
+      { header: 'Name', dataKey: 'name' },
+      { header: 'Attendance Status', dataKey: 'status' }
+    ];
 
-    students[selectedClass].forEach(student => {
-        const row = attendanceTable.insertRow();
-        const markCell = row.insertCell(0);
-        const registerCell = row.insertCell(1);
-        const nameCell = row.insertCell(2);
-        const timeCell = row.insertCell(3);
-        const marksCell = row.insertCell(4);
-
-        const checkbox = document.createElement('div');
-        checkbox.className = 'custom-checkbox';
-        const isChecked = localStorage.getItem(`${selectedClass}-${student.register}`);
-
-        if (isChecked) {
-            checkbox.classList.add('checked');
-            timeCell.textContent = isChecked;
+    doc.autoTable({
+      columns: columns,
+      body: tableData,
+      startY: 44,
+      theme: 'grid',
+      margin: { top: 30 },
+      styles: { fontSize: 10 },
+      headStyles: {
+        fillColor: [0, 0, 0],
+        textColor: [0, 0, 0],
+        fontStyle: 'bold'
+      },
+      didParseCell: (data) => {
+        if (data.section === 'head') {
+          data.cell.styles.fillColor = [255, 230, 66];
+        } else if (data.section === 'body') {
+          const rowData = tableData[data.row.index];
+          if (rowData && rowData.rowColor) {
+            data.cell.styles.fillColor = rowData.rowColor;
+          }
         }
-
-        checkbox.addEventListener('click', function () {
-            checkbox.classList.toggle('checked');
-            const isCheckedNow = checkbox.classList.contains('checked');
-            if (isCheckedNow) {
-                const time = new Date().toLocaleTimeString();
-                timeCell.textContent = time;
-                localStorage.setItem(`${selectedClass}-${student.register}`, time);
-            } else {
-                timeCell.textContent = '';
-                localStorage.removeItem(`${selectedClass}-${student.register}`);
-            }
-            updateSummary();
-        });
-
-        markCell.appendChild(checkbox);
-        registerCell.textContent = student.register;
-        nameCell.textContent = student.name;
-
-        const marksInput = document.createElement('input');
-        marksInput.type = 'number';
-        marksInput.style.display = addingMarks ? 'block' : 'none';
-        marksInput.dataset.register = student.register;
-        marksInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const nextInput = marksInput.parentElement.parentElement.nextElementSibling?.querySelector('input[type="number"]');
-                if (nextInput) {
-                    nextInput.focus();
-                }
-            }
-        });
-        marksCell.appendChild(marksInput);
+      },
+      didDrawPage: (data) => {
+        doc.setFontSize(10);
+        doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+      }
     });
 
-    updateSummary();
-}
-
-document.getElementById('clear-data').addEventListener('click', () => {
-    const selectedClass = classSelect.value;
-    students[selectedClass].forEach(student => {
-        localStorage.removeItem(`${selectedClass}-${student.register}`);
-    });
-    loadStudents();
-});
-
-document.getElementById('get-report').addEventListener('click', () => {
-    const selectedClass = classSelect.value;
-    const doc = new jsPDF();
-    doc.setFontSize(12);
-    doc.text(`Attendance Report - Class ${selectedClass}`, 15, 15);
-
-    const teacher = teachers[selectedClass];
-    const teacherImageUrl = teacherPhotos[selectedClass];
-
-    const generatePdfContent = () => {
-        doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
-        doc.text(`Class Teacher: ${teacher.name}`, 195.5, 40, null, null, 'right');
-
-        let tableData = [];
-        const totalStudents = students[selectedClass].length;
-        let presentCount = 0;
-
-        students[selectedClass].forEach(student => {
-            const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-            const status = isPresent ? `Present` : 'Absent';
-            tableData.push({
-                register: student.register,
-                name: student.name,
-                status: status,
-                rowColor: isPresent ? [204, 255, 204] : [255, 204, 204]
-            });
-            if (isPresent) {
-                presentCount++;
-            }
-        });
-
-        const absentCount = totalStudents - presentCount;
-        doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 15, 35);
-
-        const columns = [
-            { header: 'Register Number', dataKey: 'register' },
-            { header: 'Name', dataKey: 'name' },
-            { header: 'Attendance Status', dataKey: 'status' }
-        ];
-
-        doc.autoTable({
-            columns: columns,
-            body: tableData,
-            startY: 44,
-            theme: 'grid',
-            margin: { top: 30 },
-            styles: { fontSize: 10 },
-            headStyles: {
-                fillColor: [0, 0, 0],
-                textColor: [0, 0, 0],
-                fontStyle: 'bold'
-            },
-            didParseCell: (data) => {
-                if (data.section === 'head') {
-                    data.cell.styles.fillColor = [255, 230, 66];
-                } else if (data.section === 'body') {
-                    const rowData = tableData[data.row.index];
-                    if (rowData && rowData.rowColor) {
-                        data.cell.styles.fillColor = rowData.rowColor;
-                    }
-                }
-            },
-            didDrawPage: (data) => {
-                doc.setFontSize(10);
-                doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-            }
-        });
-
-        doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
-    };
-
-    if (teacherImageUrl) {
-        const img = new Image();
-        img.src = teacherImageUrl;
-        img.onload = () => {
-            doc.addImage(img, 'JPEG', 160, 4, 28, 31);
-            generatePdfContent();
-        };
-        img.onerror = () => {
-            generatePdfContent();
-        };
-    } else {
-        generatePdfContent();
-    }
+    doc.save(`Attendance_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+  };
 });
 
 document.getElementById('absent-report').addEventListener('click', () => {
+  const selectedClass = classSelect.value;
+  const doc = new jsPDF();
+  doc.setFontSize(12);
+  doc.text(`Absent Report - Class ${selectedClass}`, 10, 10);
+  const teacher = teachers[selectedClass];
+  doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
+  doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
+  let tableData = [];
+  const totalStudents = students[selectedClass].length;
+  let presentCount = 0;
+  students[selectedClass].forEach(student => {
+    const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
+    if (!isPresent) {
+      tableData.push([student.register, student.name]);
+    } else {
+      presentCount++;
+    }
+  });
+  const absentCount = totalStudents - presentCount;
+  doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
+  const columns = [
+    { header: 'Register Number', dataKey: 0 },
+    { header: 'Name', dataKey: 1 }
+  ];
+  doc.autoTable({
+    columns: columns,
+    body: tableData,
+    startY: 35,
+    theme: 'grid',
+    margin: { top: 30 },
+    didDrawPage: (data) => {
+      doc.setFontSize(10);
+      doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+    }
+  });
+  doc.save(`Absent_Report_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+});
+
+addMarksButton.addEventListener('click', () => {
+  if (!addingMarks) {
+    addingMarks = true;
+    addMarksButton.textContent = 'Get Marks';
+    marksColumn.style.display = 'table-cell';
+    subjectContainer.style.display = 'block';
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+      input.style.display = 'block';
+    });
+  } else {
+    addingMarks = false;
     const selectedClass = classSelect.value;
     const doc = new jsPDF();
     doc.setFontSize(12);
-    doc.text(`Absent Report - Class ${selectedClass}`, 10, 10);
+    const selectedSubject = subjectSelect.value;
+    doc.text(`Marks Report for ${selectedSubject} - Class ${selectedClass}`, 10, 10);
     const teacher = teachers[selectedClass];
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
     doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
     let tableData = [];
-    const totalStudents = students[selectedClass].length;
+    let totalStudents = students[selectedClass].length;
     let presentCount = 0;
     students[selectedClass].forEach(student => {
-        const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-        if (!isPresent) {
-            tableData.push([student.register, student.name]);
-        } else {
-            presentCount++;
-        }
+      const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
+      const status = isPresent ? isPresent : 'Absent';
+      const marksInput = document.querySelector(`input[data-register="${student.register}"]`);
+      const marks = marksInput.value || 'N/A';
+      const grade = getGrade(parseInt(marks, 10));
+      tableData.push([student.register, student.name, status, marks, grade]);
+      if (isPresent) {
+        presentCount++;
+      }
     });
     const absentCount = totalStudents - presentCount;
     doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
-    const columns = [
-        { header: 'Register Number', dataKey: 0 },
-        { header: 'Name', dataKey: 1 }
-    ];
     doc.autoTable({
-        columns: columns,
-        body: tableData,
-        startY: 35,
-        theme: 'grid',
-        margin: { top: 30 },
-        didDrawPage: (data) => {
-            doc.setFontSize(10);
-            doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-        }
+      head: [['Register Number', 'Name', 'Attendance Status', 'Marks', 'Grade']],
+      body: tableData,
+      startY: 35,
+      theme: 'grid',
+      margin: { top: 30 },
+      didDrawPage: (data) => {
+        doc.setFontSize(10);
+        doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
+      }
     });
-    doc.save(`Absent_Report_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+    doc.save(`Marks_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
+    addMarksButton.textContent = 'Add Marks';
+    marksColumn.style.display = 'none';
+    subjectContainer.style.display = 'none';
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+      input.style.display = 'none';
+    });
+  }
 });
 
-addMarksButton.addEventListener('click', () => {
-    if (!addingMarks) {
-        addingMarks = true;
-        addMarksButton.textContent = 'Get Marks';
-        marksColumn.style.display = 'table-cell';
-        subjectContainer.style.display = 'block';
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.style.display = 'block';
-        });
-    } else {
-        addingMarks = false;
-        const selectedClass = classSelect.value;
-        const doc = new jsPDF();
-        doc.setFontSize(12);
-        const selectedSubject = subjectSelect.value;
-        doc.text(`Marks Report for ${selectedSubject} - Class ${selectedClass}`, 10, 10);
-        const teacher = teachers[selectedClass];
-        doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
-        doc.text(`Teacher: ${teacher.name}`, 200, 20, null, null, 'right');
-        let tableData = [];
-        let totalStudents = students[selectedClass].length;
-        let presentCount = 0;
-        students[selectedClass].forEach(student => {
-            const isPresent = localStorage.getItem(`${selectedClass}-${student.register}`);
-            const status = isPresent ? isPresent : 'Absent';
-            const marksInput = document.querySelector(`input[data-register="${student.register}"]`);
-            const marks = marksInput ? (marksInput.value || 'N/A') : 'N/A';
-            const grade = getGrade(parseInt(marks, 10));
-            tableData.push([student.register, student.name, status, marks, grade]);
-            if (isPresent) {
-                presentCount++;
-            }
-        });
-        const absentCount = totalStudents - presentCount;
-        doc.text(`Total Students: ${totalStudents} Present: ${presentCount} Absent: ${absentCount}`, 10, 30);
-        doc.autoTable({
-            head: [['Register Number', 'Name', 'Attendance Status', 'Marks', 'Grade']],
-            body: tableData,
-            startY: 35,
-            theme: 'grid',
-            margin: { top: 30 },
-            didDrawPage: (data) => {
-                doc.setFontSize(10);
-                doc.text(`Page ${data.pageCount}`, doc.internal.pageSize.getWidth() - 30, doc.internal.pageSize.getHeight() - 10);
-            }
-        });
-        doc.save(`Marks_${selectedClass}_${new Date().toLocaleDateString()}.pdf`);
-        addMarksButton.textContent = 'Add Marks';
-        marksColumn.style.display = 'none';
-        subjectContainer.style.display = 'none';
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.style.display = 'none';
-        });
-    }
+classSelect.addEventListener('change', () => {
+  loadStudents();
 });
+
+loadStudents();
 
 summaryReportButton.addEventListener('click', () => {
     classSelection.style.display = 'block';
@@ -855,9 +1096,12 @@ summaryReportButton.addEventListener('click', () => {
 generateSummaryButton.addEventListener('click', () => {
     const doc = new jsPDF();
     doc.setFontSize(16);
-    doc.text('Grade 9 Summary Report', 10, 10);
+    doc.text('Grade 11 Summary Report', 10, 10);
     doc.setFontSize(12);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 20);
+    doc.text('Section Head - Mr. D. Gunasekara', 10, 30);
+
+   
 
     let summaryData = [];
     let overallTotal = 0;
@@ -866,7 +1110,7 @@ generateSummaryButton.addEventListener('click', () => {
 
     document.querySelectorAll('#classSelection input[type="checkbox"]:checked').forEach(checkbox => {
         const className = checkbox.value;
-        const classTeacher = teachers[className]?.name || "Unknown";
+        const classTeacher = classTeachers[className]?.name || "Unknown";
         const classStudents = students[className] || [];
         const totalStudents = classStudents.length;
         let presentCount = 0;
@@ -888,7 +1132,7 @@ generateSummaryButton.addEventListener('click', () => {
     doc.autoTable({
         head: [['Class', 'Class Teacher', 'Total Students', 'Present', 'Absent']],
         body: summaryData,
-        startY: 30,
+        startY: 40,
         styles: { fillColor: [221, 235, 247], textColor: [0, 0, 0] },
         headStyles: { fillColor: [36, 180, 171], textColor: [255, 255, 255] },
     });
@@ -913,16 +1157,14 @@ generateSummaryButton.addEventListener('click', () => {
         tableLineWidth: 0.5
     });
 
-    doc.save(`Grade_9_Summary_Report_${new Date().toLocaleDateString()}.pdf`);
+    doc.save(`Grade_11_Summary_Report_${new Date().toLocaleDateString()}.pdf`);
 
     classSelection.style.display = 'none';
 });
 
-classSelect.addEventListener('change', () => {
-    loadStudents();
-});
+classSelect.addEventListener('change', loadStudents);
+loadStudents();
 
-window.onload = loadStudents;
 </script>
 </body>
 </html>
